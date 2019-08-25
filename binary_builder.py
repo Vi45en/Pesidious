@@ -23,14 +23,14 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description='PE File Feature Extraction. \nThe purpose of this application is extract the feature vectors from PE files for the purpose of malware analysis and malware mutation.')
 
-    parser.add_argument( "malware-file", help="The filepath of the original malicious PE file.",
-                        type=Path, default=Path("Data/malware"))
+    parser.add_argument( "malware_file", help="The filepath of the original malicious PE file.",
+                        type=Path)
     parser.add_argument(
-        '-a', "--adversarial-vector", help="The filepath of the benign PE files whose features are to be extracted.", type=Path, default=Path("adversarial_feature_vector_directory\adversarial_feature_array_set.pk"))
+        '-a', "--adversarial-vector", help="The filepath of the benign PE files whose features are to be extracted.", type=Path, default=Path("adversarial_feature_vector_directory/adversarial_feature_array_set.pk"))
     parser.add_argument(
         '-o',"--output-dir", help="The filepath to where the adversially generated malware will be generated. If this location does not exist, it will be created.", type=Path, default=Path("Mutated Files"))
     parser.add_argument(
-        '-f', "--feature-mapping", help="The filepath that stores the feature mappings used.", type=Path, default=Path("feature_vector_directory\feature_vector_mapping.pk"))
+        '-f', "--feature-mapping", help="The filepath that stores the feature mappings used.", type=Path, default=Path("feature_vector_directory/feature_vector_mapping.pk"))
 
     parser.add_argument('-d', "--detailed-log",
                         help="Detailed Logs", type=bool, default=False)
@@ -190,7 +190,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         for index in tqdm(range(100), desc="Progress : "):                               #For testing purposes. Shift to the above command when done testing.
             #binary = binary_original
             logging.debug("Creating Malware Mutation Number" + str(index))
-            binary = lief.parse(malware_pe)
+            binary = lief.parse(str(malware_pe))
 
             imports_len = 0
             section_len = 0
@@ -539,7 +539,7 @@ def main():
     logging_setup(args.detailed_log, args.logfile, args.log_level)
 
     logging.info("Setting parameters ...")
-    logging.info("\tOriginal Malware PE binary - " + str(args.malware_pe))
+    logging.info("\tOriginal Malware PE binary - " + str(args.malware_file))
     logging.info("\tAdversarially generated malware Feature Vector - " +
                  str(args.adversarial_vector))
     logging.info("\tFeature Vector Mapping - " + str(args.feature_mapping))
@@ -550,7 +550,7 @@ def main():
     logging.info("\tDetailed Log - " + str(args.detailed_log))
     logging.info("\tFeature vector type - " + str(args.feature_vector))
 
-    binary_builder(args.malware_pe, args.adversarial_vector,
+    binary_builder(args.malware_file, args.adversarial_vector,
                    args.feature_mapping, args.output_dir, args.feature_vector)
     # send_to_sandbox(args.output_dir)
     
