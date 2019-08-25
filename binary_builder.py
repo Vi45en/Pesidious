@@ -555,8 +555,8 @@ def main():
     logging.info("Setting parameters ...")
     logging.info("\tOriginal Malware PE binary - " + str(args.malware_file))
     logging.info("\tAdversarially generated malware Feature Vector - " +
-                 adversarial_vector)
-    logging.info("\tFeature Vector Mapping - " + feature_mapping)
+                 str(adversarial_vector))
+    logging.info("\tFeature Vector Mapping - " + str(feature_mapping))
     logging.info("\tOutput Directory - " + str(args.output_dir))
 
     logging.info("\tLogfile - " + str(args.logfile))
@@ -564,8 +564,8 @@ def main():
     logging.info("\tDetailed Log - " + str(args.detailed_log))
     logging.info("\tFeature vector type - " + str(args.feature_vector))
 
-    binary_builder(args.malware_file, adversarial_vector,
-                   feature_mapping, args.output_dir, args.feature_vector)
+    binary_builder(str(args.malware_file), str(adversarial_vector),
+                   str(feature_mapping), str(args.output_dir), str(args.feature_vector))
     # send_to_sandbox(args.output_dir)
     
     pass
