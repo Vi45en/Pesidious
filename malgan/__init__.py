@@ -287,7 +287,7 @@ class MalGAN(nn.Module):
         """
         backup_name = self._build_export_name(epoch_num)
         try:
-            os.remove(backup_name)
+            os.remove(str(backup_name))
         except OSError:
             logging.warning("Error trying to delete model: %s", backup_name)
 
