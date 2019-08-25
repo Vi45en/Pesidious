@@ -167,8 +167,6 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 #### Environment 
 
-Add the training and testing data. 
-
 #### Execution
 
 1. Create a new directory `testing-samples` and copy your test samples into it. 
@@ -186,6 +184,7 @@ Add the training and testing data.
 
 ## Training and Testing Data
 
+### Training Data
 1. In order to train the Generative Adversarial Network and Reinforcement Learning agents, a large dataset of malicious and benign binaries are required. For that purpose we are sharing the dataset that we have collected.
 
    + **1682 Benign binaries** - _Scraped from our host computers_.
@@ -218,7 +217,7 @@ Add the training and testing data.
            |__ ff8f9699842bb44ef038ca7f675c9cc90ab8f00bc81564fa87f12d700e0040fb
       ```
       
-   1. Download the backdoor malware binary dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/Eba11TVqORhCigT0Mg_hS4IBw2B7PK2eRJWwqmqm9wR1LA?e=STnjmA) and place the **files** into the `gym_malware/envs/utils/samples` directory as illustrated below:
+   1. Download the backdoor malware binary dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/EXejpGJMibRAr0P35OnXmmUB5JX0fX33BSEN1CQQ_8fpDQ?e=8uTjPn) and place the **files** into the `gym_malware/envs/utils/samples` directory as illustrated below:
    
       ```
       gym_malware/
@@ -245,7 +244,9 @@ Add the training and testing data.
        │           ├── e3107121e6e515f84597b1e65bd92516327c5fffa9e80068b0e1c60d596568a1
       ```
    
-   
+### Testing Data
+
+Download the backdoor malware binary dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/Eba11TVqORhCigT0Mg_hS4IBw2B7PK2eRJWwqmqm9wR1LA?e=STnjmA) and place the **files** into the `gym_malware/testing-samples` directory.
 
 ## Testing Procedures and Results
 
