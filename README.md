@@ -94,6 +94,8 @@ The following steps will guide you through all the installations required to set
 
 ### Training Instructions
 
+> Note: If you wish to directly jump to the testing phase with already generated models, please proced to the [next section](#testing-instructions).
+
 1. Feature extraction and feature mapping vector generation.
 
    + The first step in the training process is generating a feature vector mapping for section names and import functions from a    malware and benign binary samples.  
@@ -138,6 +140,8 @@ The following steps will guide you through all the installations required to set
    > For example: If you have generated a adversarial feature vector of only the sections, make sure to add the command `--feature-vector section` to correctly reconstruct the section name.
    
    + The `binary_builder.py` python script outputs the `adversarial_imports_set.pk` or the `adversarial_section_set.pk`, based on the feature mapping you select, in the `adversarial_feature_vector_directory` directory. 
+   
+   
 ### Testing Instructions
 
 The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 100 (50%) of mutated samples, the training stops and saves the model as dqeaf.pt which is used by the testing script.
@@ -166,6 +170,9 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 ## Authors
 
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
 * **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
