@@ -355,12 +355,17 @@ def import_extractor(adversarial_vector: str, feature_mapping: str):
             sample = adversarial_feature_vector[index][i]
             sample = sample.tolist()
             adversial_imports = []
+            unfiltered_adversial_imports =[]
 
             logging.debug("Sample lenght  : %d", len(sample))
 
             for i in (range(len(sample))):
                 if sample[i] > 0:
-                    adversial_imports.append(feature_vector_mapping[i])
+                    unfiltered_adversial_imports.append(feature_vector_mapping[i])
+
+            for imports in unfiltered_adversial_imports:
+                if "32" in imports:
+                    adversial_imports.append(imports)
 
             adversarial_imports_set.append(adversial_imports)
             logging.debug("Import mapping for adversarial feature vector [" + str(
