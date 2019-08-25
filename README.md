@@ -140,7 +140,7 @@ The following steps will guide you through all the installations required to set
    + The `binary_builder.py` python script outputs the `adversarial_imports_set.pk` or the `adversarial_section_set.pk`, based on the feature mapping you select, in the `adversarial_feature_vector_directory` directory. 
 ### Testing Instructions
 
-The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 50% of mutated samples, the training stops and saves the model as dqeaf.pt
+The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 100 (50%) of mutated samples, the training stops and saves the model as dqeaf.pt which is used by the testing script.
 
 1. Create a new directory 'testing-samples' and copy your test samples in it. 
 
