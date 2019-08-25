@@ -194,7 +194,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         for index in tqdm(range(100), desc="Progress : "):                               #For testing purposes. Shift to the above command when done testing.
             #binary = binary_original
             logging.debug("Creating Malware Mutation Number" + str(index))
-            binary = lief.parse(str(malware_pe))
+            binary = lief.parse(malware_pe)
 
             imports_len = 0
             section_len = 0
@@ -470,7 +470,8 @@ def features_extractor(adversarial_vector: str, feature_mapping: str):
 
             for feature in adversial_features:
                 if ":" in feature:
-                    adversial_imports.append(feature)
+                    if "32" in feature:
+                        adversial_imports.append(feature)
                     pass
                 else:
                     adversial_section.append(feature)
