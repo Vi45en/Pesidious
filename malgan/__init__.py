@@ -376,7 +376,7 @@ class MalGAN(nn.Module):
 
         adversarial_feature_vector_directory = "adversarial_feature_vector_directory"
 
-        if not os._exists(adversarial_feature_vector_directory):
+        if not os.path.exists(adversarial_feature_vector_directory):
             os.mkdir(adversarial_feature_vector_directory)
 
         # noinspection PyTypeChecker

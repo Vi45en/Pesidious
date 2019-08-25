@@ -2,16 +2,16 @@ import argparse
 import logging
 import os
 import pickle
-import sys
-import re
 import random
-import CuckooAPI
+import re
+import sys
+from pathlib import Path
 
 from tqdm import tqdm
 
-import lief
-
+import CuckooAPI
 import extract_features
+import lief
 
 SECTION_INDEX = 6725
 
@@ -23,23 +23,23 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description='PE File Feature Extraction. \nThe purpose of this application is extract the feature vectors from PE files for the purpose of malware analysis and malware mutation.')
 
-    parser.add_argument("malware_pe", help="The filepath of the original malicious PE file.",
-                        type=str, default="Data\\one_malware")
+    parser.add_argument( "malware-file", help="The filepath of the original malicious PE file.",
+                        type=Path, default=Path("Data/malware"))
     parser.add_argument(
-        "adversarial_vector", help="The filepath of the benign PE files whose features are to be extracted.", type=str)
+        '-a', "--adversarial-vector", help="The filepath of the benign PE files whose features are to be extracted.", type=Path, default=Path("adversarial_feature_vector_directory\adversarial_feature_array_set.pk"))
     parser.add_argument(
-        "output_dir", help="The filepath to where the adversially generated malware will be generated. If this location does not exist, it will be created.", type=str)
+        '-o',"--output-dir", help="The filepath to where the adversially generated malware will be generated. If this location does not exist, it will be created.", type=Path, default=Path("Mutated Files"))
     parser.add_argument(
-        "feature_mapping", help="The filepath that stores the feature mappings used.")
+        '-f', "--feature-mapping", help="The filepath that stores the feature mappings used.", type=Path, default=Path("feature_vector_directory\feature_vector_mapping.pk"))
 
     parser.add_argument('-d', "--detailed-log",
                         help="Detailed Logs", type=bool, default=False)
-    parser.add_argument('-f', "--logfile", help="The file path to store the logs.",
+    parser.add_argument('-l', "--logfile", help="The file path to store the logs.",
                         type=str, default="binary_builder_logs.txt")
 
     help_msg = " ".join(["Set the severity level of logs you want to collect. By default, the logging module logs the messages with a severity level of INFO or above. Valid choices (Enter the numeric values) are: \"[10] - DEBUG\", \"[20] - INFO\",",
                          "\"[30] - WARNING\", \"[40] - ERROR\" and \"[50] - CRITICAL\"."])
-    parser.add_argument('-l', "--log-level", help=help_msg,
+    parser.add_argument('-L', "--log-level", help=help_msg,
                         type=int, default=logging.INFO)
 
     help_msg = " ".join(["Select what features you will be using to reconstruct your malware binary. Valid choices are: \"imports\", \"sections\",",
@@ -127,7 +127,14 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
     logging.info("Constructing features from adversarially generated feature vectors ...")
 
     if feature_type.lower() == "section":
+        
         section_state = True
+        
+        output_path = os.path.join(output_path, "Sections")
+        if not os.path.exists(output_path):
+            logging.info("Constructing output directory for Sections...")
+            os.makedirs(output_path)
+            
         logging.info("Constructing section list ...")
         adversarial_sections_set = section_extractor(
             adversarial_vector, feature_mapping)
@@ -137,8 +144,15 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         lenght_of_features = len(adversarial_sections_set)
         logging.info("Section list completed with %d sections ...", len(adversarial_sections_set))
     elif feature_type.lower() == "imports":
-        logging.info("Constructing imports list ...")
+
         imports_state = True
+
+        output_path = os.path.join(output_path, "Imports")
+        if not os.path.exists(output_path):
+            logging.info("Constructing output directory for Imports...")
+            os.makedirs(output_path)
+
+        logging.info("Constructing imports list ...")
         adversarial_imports_set = import_extractor(
             adversarial_vector, feature_mapping)
 
@@ -147,9 +161,15 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         lenght_of_features = len(adversarial_imports_set)
         logging.info("Imports list completed with %d imports ...", len(adversarial_imports_set))
     else:
-        logging.info("Constructing section and imports list ...")
         imports_state = True
         section_state = True
+
+        output_path = os.path.join(output_path, "features")
+        if not os.path.exists(output_path):
+            logging.info("Constructing output directory ...")
+            os.makedirs(output_path)
+
+        logging.info("Constructing section and imports list ...")
         adversarial_imports_set, adversarial_sections_set = features_extractor(
             adversarial_vector, feature_mapping)
 
