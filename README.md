@@ -34,7 +34,7 @@ The proposed solution successfully generates a mutated malware sample by using r
 
 The following steps will guide you through all the installations required to set up the environment.
 
-1. Install and set up Python 3. [Installation Instructions](https://realpython.com/installing-python/)
+1. Install and set up Python 3.6. [Installation Instructions](https://realpython.com/installing-python/)
 
 1. Clone the repository. 
     ```sh
@@ -47,8 +47,15 @@ The following steps will guide you through all the installations required to set
     ```
     
 1. Download malware and benign binary samples from [here](#training-and-testing-data).
+
+1. Make sure that you have pip 8.1.1 installed and set up.
+> This is due to later versions of pip not playing well with the PyTorch libary. 
+
+```sh
+pip install pip==8.1.1
+```
  
-1. Setting up a virtual environment in Python 3.7. 
+1. Setting up a virtual environment in Python 3.6. 
 
    1. Downloading and installing _virtualenv_. 
    
@@ -56,12 +63,12 @@ The following steps will guide you through all the installations required to set
    pip install virtualenv
    ```
    
-   2. Create the virtual environment in Python 3.7.
+   2. Create the virtual environment in Python 3.6.
    
    ```sh
     virtualenv -p path\to\your\python.exe test_env
     ```    
-    >Note: In Windows, your Python3.7 environment is most likely to be in the following directory: `C:\Python37\Python.exe`.
+    >Note: In Windows, your Python3.6 environment is most likely to be in the following directory: `C:\Python36\Python.exe`.
    
    3. Activate the test environment.     
    
@@ -86,9 +93,6 @@ The following steps will guide you through all the installations required to set
     pip install -r requirements.txt
     ```
     > Refer to the official PyTorch link in order to download the torch library appropriate for you [here](https://pytorch.org/get-started/locally/).
-    
-    > Install lief for Python 3.7 using the following command.
-      `pip install https://github.com/lief-project/packages/raw/lief-master-latest/pylief-0.9.0.dev.zip`
  
  
 ## Running Instructions
@@ -155,27 +159,20 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 #### Environment 
 
-1. Make sure that you have pip 8.1.1 and python3.6 installed for the program to run. 
+In order to run the testing environment make sure you have more than 200 malware samples in the `gym_malware/envs/utils/samples/` directory for mutation. 
 
-1. Create a virtual envrionment as given [here](https://docs.python.org/3/tutorial/venv.html). 
+#### Execution
 
-1. Install the requirements using the following command : 
+1. Create a new directory `testing-samples` and copy your test samples into it. 
 
-```
-pip install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-Collecting torch==1.2.0+cpu
-```
+
+1. Run the `dqeaf-test.py` python script to mutate malware samples you loaded in `testing-samples` earlier. 
 
 ```
-pip install -r requirements_rl.txt
+python dqeaf-test.py testing-samples
 ```
 
-## Execution
-1. Create a new directory 'testing-samples' and copy your test samples in it. 
-
-2. python dqeaf-test.py testing-samples
-
-3. The mutated malware samples will be stored in the evaded-samples directory.
+1. The mutated malware samples will be stored in the `evaded-samples` directory.
 
 
 
