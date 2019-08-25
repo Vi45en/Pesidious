@@ -89,13 +89,19 @@ pip install pip==8.1.1
    python --version
    ```    
 
+1. Install PyTorch.
+
+   ```
+   pip install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+   ```   
+   > If you face any issues, refer to the official PyTorch link in order to download the torch library appropriate for you [here](https://pytorch.org/get-started/locally/).
+
 1. Install all the required libraries, by installing the requirements.txt file.
 
     ```sh
     pip install -r requirements.txt
     ```
-    > Refer to the official PyTorch link in order to download the torch library appropriate for you [here](https://pytorch.org/get-started/locally/).
- 
+     
  
 ## Running Instructions
 
@@ -161,7 +167,7 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 #### Environment 
 
-In order to run the testing environment make sure you have more than 200 malware samples in the `gym_malware/envs/utils/samples/` directory for mutation. 
+Add the training and testing data. 
 
 #### Execution
 
@@ -186,7 +192,7 @@ In order to run the testing environment make sure you have more than 200 malware
    + **2094 Malware binaries** - _Downloaded from VirusTotal_.
    + **
 
-1. Downaload the training dataset from [here]()
+1. Downaload the training dataset from [here](https://uowmailedu-my.sharepoint.com/:f:/g/personal/cvrv570_uowmail_edu_au/Ep8qkEt-XvFCiOBbQS9FynQBQh6gULH1RpoA9Wdlh8xn_A?e=VdjH1D)
 
 1. Once you have downloaded the datasets, take care to place the files in the right directory in order to run the application with no errors. 
 
