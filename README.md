@@ -174,6 +174,8 @@ pip install -r requirements_rl.txt
 
 ## Training and Testing Data
 
+If you have a VirusTotal API key, you may download samples to the `gym_malware/gym_malware/envs/utils/samples/` using the Python script `download_samples.py`.
+
 ## Testing Procedures and Results
 
 ## To Do
