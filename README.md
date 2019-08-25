@@ -53,26 +53,26 @@ The following steps will guide you through all the installations required to set
 1. Make sure that you have pip 8.1.1 installed and set up.
 > This is due to later versions of pip not playing well with the PyTorch libary. 
 
-```sh
-pip install pip==8.1.1
-```
+   ```sh
+   pip install pip==8.1.1
+   ```
  
 1. Setting up a virtual environment in Python 3.6. 
 
    1. Downloading and installing _virtualenv_. 
    
-   ```sh
-   pip install virtualenv
-   ```
+      ```sh
+      pip install virtualenv
+      ```
    
-   2. Create the virtual environment in Python 3.6.
+   1. Create the virtual environment in Python 3.6.
    
-   ```sh
-    virtualenv -p path\to\your\python.exe test_env
-    ```    
-    >Note: In Windows, your Python3.6 environment is most likely to be in the following directory: `C:\Python36\Python.exe`.
+      ```sh
+       virtualenv -p path\to\your\python.exe test_env
+       ```    
+       >Note: In Windows, your Python3.6 environment is most likely to be in the following directory: `C:\Python36\Python.exe`.
    
-   3. Activate the test environment.     
+   1. Activate the test environment.     
    
         1. For Windows:
         ```sh
@@ -83,11 +83,11 @@ pip install pip==8.1.1
         ```sh
         source test_env/bin/activate
         ```    
-   4. Test out the version of your virtualenv environment to confirm it is in Python3.6.     
+   1. Test out the version of your virtualenv environment to confirm it is in Python3.6.     
            
-   ```sh
-   python --version
-   ```    
+      ```sh
+      python --version
+      ```    
 
 1. Install PyTorch.
 
