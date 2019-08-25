@@ -3,6 +3,8 @@
 
 The purpose of our project is to use artificial intelligence to mutate a malware sample to bypass anti-virus agents while keeping its functionality intact. In the past, notable work has been done in this domain with researchers either looking at reinforcement learning or generative adversarial networks as their weapons of choice to modify the states of a malware executable in order to deceive anti-virus agents. Our solution makes use of a combination of deep reinforcement learning and GANs in order to overcome some of the limitations faced while using these approaches independently.
 
+Find our full documentation [here](https://docs.google.com/document/d/1WDYrzpCX6Mwkij3FSb7KGS-PKGtPhpxKtT-ywGrvi6w/edit?usp=sharing) 
+
 
 ## Table of Content
 
@@ -153,7 +155,7 @@ pip install pip==8.1.1
 
 ### Testing Instructions
 
-The output from GAN has already been stored as (gym_malware/envs/controls/adverarial_imports_set.pk and gym_malware/envs/controls/adverarial_sections_set.pk) and is being used for the training. 
+The output from GAN has already been stored as (`gym_malware/envs/controls/adverarial_imports_set.pk` and `gym_malware/envs/controls/adverarial_sections_set.pk`) and is being used for the training. 
 
 The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 100 (50%) of mutated samples, the training stops and saves the model as dqeaf.pt which is used by the testing script.
 
@@ -168,9 +170,9 @@ In order to run the testing environment make sure you have more than 200 malware
 
 1. Run the `dqeaf-test.py` python script to mutate malware samples you loaded in `testing-samples` earlier. 
 
-```
-python dqeaf-test.py testing-samples
-```
+   ```
+   python dqeaf-test.py testing-samples
+   ```
 
 1. The mutated malware samples will be stored in the `evaded-samples` directory.
 
@@ -181,6 +183,34 @@ python dqeaf-test.py testing-samples
 If you have a VirusTotal API key, you may download samples to the `gym_malware/gym_malware/envs/utils/samples/` using the Python script `download_samples.py`.
 
 ## Testing Procedures and Results
+
+
+
+##### Results comparing the number of functional mutations generated when trained with different thresholds for detection and maximum mutations allowed (Testing Data : 250 samples)
+
+
+| Threshold for detection    | Maximum mutations allowed | Mutations Generated | Functional Mutation | Average VirusTotal Score |
+|----------------------------|---------------------------|---------------------|---------------------|--------------------------|
+|             90%            |             80            |         140         |         114         |           40/69          |
+|             85%            |            120            |         115         |          62         |           29/69          |
+|             80%            |            160            |          94         |          24         |           11/69          |
+
+##### Results comparing the impact blackbox detector algorithm and activation function have on the TPR of the adversarially generated feature vector
+
+<p align="center">
+ <img src="https://lh5.googleusercontent.com/N0DSZWbPwMUmNo0JRWmuVwSxDLHRUit7t2jcgUW4UfvYLOF365_fT0hvLuK_QWocZ4D9ugYXIxj11LKBAYOYqoj-lPGZzpyhBW8D0H8J" align="middle">
+</p>
+
+#### Results comparing the impact the size of the feature vector have on the TPR of the adversarially generated feature vector
+
+<p align="center">
+ <img src="https://lh3.googleusercontent.com/QtenUP6It_5W4Pysmr1TKZ1HlYdh9Q9cJ7F8gQ_rneb3lwkMnnwzMdtnXfY3r3dwJcFyb3_O4AwEDOflg4LVMkdeI6KdiGBWDytBjAPGuONk6q5mN7gTMVMeRj3i384NtuE1TpHe" align="middle">
+</p>
+
+
+
+
+
 
 ## To Do
 
