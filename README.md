@@ -140,7 +140,13 @@ The following steps will guide you through all the installations required to set
    + The `binary_builder.py` python script outputs the `adversarial_imports_set.pk` or the `adversarial_section_set.pk`, based on the feature mapping you select, in the `adversarial_feature_vector_directory` directory. 
 ### Testing Instructions
 
-1. 
+The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 50% of mutated samples, the training stops and saves the model as dqeaf.pt
+
+1. Create a new directory 'testing-samples' and copy your test samples in it. 
+
+2. python dqeaf-test.py testing-samples
+
+3. The mutated malware samples will be stored in the evaded-samples directory.
 
 
 
@@ -160,7 +166,7 @@ The following steps will guide you through all the installations required to set
 
 ## Authors
 
-* **Bedang Sen** - *Developer Advocate, IBM & Student, University of Wollongong in Dubai* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
