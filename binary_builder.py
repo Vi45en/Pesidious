@@ -9,7 +9,7 @@ from pathlib import Path
 
 from tqdm import tqdm
 
-import CuckooAPI
+# import CuckooAPI
 import extract_features
 import lief
 
