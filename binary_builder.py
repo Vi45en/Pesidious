@@ -219,11 +219,12 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
                               str(len(imports_to_be_added)))
 
                 import_count = 0
+                import_threshold = random.randrange(40)
 
                 if len(imports_to_be_added):
                     for lib_func in (imports_to_be_added):
 
-                        if import_count > 40:
+                        if import_count > import_threshold:
                             break
 
                         library, function_name = lib_func.split(':')
@@ -253,11 +254,12 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
                               str(len(sections_to_be_added)))
 
                 section_count = 0
+                sections_threshold = random.randrange(60)
 
                 if len(sections_to_be_added):
                     for sec in (sections_to_be_added):
 
-                        if section_count > 60:
+                        if section_count > sections_threshold:
                             break
 
                         logging.debug("section --> " + sec)
