@@ -178,6 +178,9 @@ pip install -r requirements_rl.txt
 
 ## To Do
 
+- [x] Substitute Blackbox detector with Virus total as the training detector. 
+- [ ] Combine scripts for reinforcement learning and malware generative adversarial network into one script for ease of use. 
+- [ ] Identify more accurate import functions for malwares, to retain functionality.
 
 ## Built With
 
