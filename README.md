@@ -175,12 +175,11 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 ## Authors
 
-* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
-* **Bedang Sen** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Bednag Sen](http://github.com/bedangSen/)
-* **Prasant Adhikari** - *Research Student, New York Unviersity Abu Dhabi* - [Prasant Adhikari](https://github.com/prasantadh)
-* **Muhammad Osama Khan** - *Research Student, New York Unviersity Abu Dhabi* - [Muhammad Osama Khan](https://github.com/mok232)
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Github](https://github.com/Chandni97)
+* **Bedang Sen** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Github](http://github.com/bedangSen/)
+* **Prasant Adhikari** - *Research Student, New York Unviersity Abu Dhabi* - [Github](https://github.com/prasantadh)
+* **Muhammad Osama Khan** - *Research Student, New York Unviersity Abu Dhabi* - [Github](https://github.com/mok232)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Acknowledgments
 
