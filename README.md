@@ -1,7 +1,3 @@
-
-
-
-
 # dqeaf-gym-malware 
 
 A malware mutation agent trained using deep reinforcement learning
@@ -42,7 +38,7 @@ OSX
 pip install https://github.com/lief-project/LIEF/releases/download/0.7.0/osx_lief-0.7.0_py3.6.tar.gz
 ```
 
-Gym-Malware Environment
+Resources
 ====
 
 The gym-malware environment (https://github.com/endgameinc/gym-malware) was modified to extract only 518 out of 2350 features for the training of the agent i.e. byte histogram normalized to sum to unity and two-dimensional entropy histogram. Additionaly only 4 actions are used for the mutation i.e. append random bytes, append import, append section and remove signature.
