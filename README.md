@@ -9,10 +9,15 @@ The purpose of our project is to use artificial intelligence to mutate a malware
 
 + [Overview](#overview)
 + [Installation Instructions](#installing-instructions)
++ [Running Instructions](#running-instructions)
 + [Training and Testing Data](#training-and-testing-data)
 + [Testing Procedures and results](#testing-procedures-and-results)
-+ [References](#references)
 + [Future Additions](#to-do)
++ [Built With](#built-with)
++ [Authors](#authors)
++ [Acknowledgments](#acknowledgements)
++ [References](#references)
+
 
 
 ## Overview
@@ -88,7 +93,28 @@ The following steps will guide you through all the installations required to set
 
 ## Running Instructions
 
-Enter intro message here.
+### Training Instructions
+
+1. Feature extraction and feature mapping vector generation
+
+   1. The first step in the training process is generating a feature vector mapping for section names and import functions from a    malware and benign binary samples.  
+
+   ```sh
+   python extract_features.py
+   ```
+   
+      Using a CLI                                     | Command                                 | Notes
+   :---------------------------------------------- | :-------------------------------------- | :----
+   Help                                            | `command -h` or `command --help`        | Display the help message and exit.
+   Malware Path                                    | `command -m` or `command --malware-path`| The filepath of the malicious PE files whose features are to be extracted. [default = `Data/malware`]
+   Benign Path                                     | `command -b` or `command --benign-path` | The filepath of the benign PE files whose features are to be extracted. [default = `Data/benign`]
+   Output Directory                                | `command -o` or `command --output-dir`  | The filepath to where the feature vectors will be extracted. If this location does not exist, it will be created. [default = `feature_vector_directory`].
+   Detailed Logs                                   | `command -d` or `command --detailed-log`| Display the debug logs on console. [default = `False`].
+   Log File                                        | `command -f` or `command --logfile      | The file path to store the logs. [default = `extract_features_logs.txt`.
+   Log Level                                       | `command -l` or `command --log-level    | Set the severity level of logs you want to collect. By default, the logging module logs the messages with a severity level of WARNING or above. Valid choices (Enter the numeric values) are: "[10] - DEBUG, [20] - INFO, [30] - WARNING, [40] - ERROR and [50] - CRITICAL. [default = `logging.INFO`.
+
+
+### Testing Instructions
 
 1. 
 
