@@ -155,6 +155,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
             os.makedirs(str(output_path))
 
         logging.info("Constructing imports list ...")
+        logging.debug("feature mapping type : " + str(type(feature_mapping)))
         adversarial_imports_set = import_extractor(
             adversarial_vector, feature_mapping)
 
