@@ -366,6 +366,7 @@ def import_extractor(adversarial_vector: str, feature_mapping: str):
             for imports in unfiltered_adversial_imports:
                 if "32" in imports:
                     adversial_imports.append(imports)
+                    logging.debug(">>> Filtered Imports : " + str(imports))
 
             adversarial_imports_set.append(adversial_imports)
             logging.debug("Import mapping for adversarial feature vector [" + str(
