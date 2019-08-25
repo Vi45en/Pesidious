@@ -334,7 +334,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
 def import_extractor(adversarial_vector: str, feature_mapping: str):
     logging.debug("feature mapping type : " + str((feature_mapping)))
     logging.info("Loading import feature vector mapping from pickle file ...")
-    feature_vector_mapping = pickle.load(open(feature_mapping, 'rb'))
+    feature_vector_mapping = pickle.load(open(str(feature_mapping), 'rb'))
     logging.info(
         "Loading adversarially generated import feature vectors from pickle file ...")
     adversarial_feature_vector = pickle.load(open(adversarial_vector, 'rb'))
