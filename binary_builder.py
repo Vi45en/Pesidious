@@ -23,7 +23,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description='PE File Feature Extraction. \nThe purpose of this application is extract the feature vectors from PE files for the purpose of malware analysis and malware mutation.')
 
-    parser.add_argument( "malware_file", help="The filepath of the original malicious PE file.",
+    parser.add_argument( '-m',"--malware_file", help="The filepath of the original malicious PE file.",
                         type=Path)
     parser.add_argument(
         '-a', "--adversarial-vector", help="The filepath of the benign PE files whose features are to be extracted.", type=Path, default=Path("adversarial_feature_vector_directory/adversarial_feature_array_set.pk"))
@@ -116,16 +116,14 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
 
     RL_features = "RL_Features"
 
-    logging.debug("Feature Mapping : " + str(feature_mapping))
 
-
-    if not os.path.exists(str(output_path)):
+    if not os.path.exists(output_path):
         logging.info("Constructing output directory ...")
-        os.makedirs(str(output_path))
+        os.makedirs(output_path)
 
     if not os.path.exists(str(RL_features)):
         logging.info("Contruncting RL Features directory ...")
-        os.mkdir(str(RL_features))
+        os.mkdir(RL_features)
 
     logging.info("Constructing features from adversarially generated feature vectors ...")
 
@@ -134,9 +132,9 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         section_state = True
 
         output_path = os.path.join(output_path, "Sections")
-        if not os.path.exists(str(output_path)):
+        if not os.path.exists(output_path):
             logging.info("Constructing output directory for Sections...")
-            os.makedirs(str(output_path))
+            os.makedirs(output_path)
             
         logging.info("Constructing section list ...")
         adversarial_sections_set = section_extractor(
@@ -151,9 +149,9 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         imports_state = True
 
         output_path = os.path.join(output_path, "Imports")
-        if not os.path.exists(str(output_path)):
+        if not os.path.exists(output_path):
             logging.info("Constructing output directory for Imports...")
-            os.makedirs(str(output_path))
+            os.makedirs(output_path)
 
         logging.info("Constructing imports list ...")
         
@@ -185,148 +183,148 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         logging.info("Imports list completed with %d imports ...", len(adversarial_imports_set))
     
 
-    try:
-        logging.info("Generating malware samples ...")
-        logging.info("Generating " + str(lenght_of_features) + " mutated malware binaries...")
-        # logging.info("Generating 10 mutated malware binaries...")
+    # try:
+    #     logging.info("Generating malware samples ...")
+    #     logging.info("Generating " + str(lenght_of_features) + " mutated malware binaries...")
+    #     # logging.info("Generating 10 mutated malware binaries...")
 
-        # for index in tqdm(range(lenght_of_features), desc="Progress : "):
-        for index in tqdm(range(100), desc="Progress : "):                               #For testing purposes. Shift to the above command when done testing.
-            #binary = binary_original
-            logging.debug("Creating Malware Mutation Number" + str(index))
-            binary = lief.parse(malware_pe)
+    #     # for index in tqdm(range(lenght_of_features), desc="Progress : "):
+    #     for index in tqdm(range(100), desc="Progress : "):                               #For testing purposes. Shift to the above command when done testing.
+    #         #binary = binary_original
+    #         logging.debug("Creating Malware Mutation Number" + str(index))
+    #         binary = lief.parse(malware_pe)
 
-            imports_len = 0
-            section_len = 0
-            adversarial_imports_len = 0
-            adversarial_sections_len = 0
+    #         imports_len = 0
+    #         section_len = 0
+    #         adversarial_imports_len = 0
+    #         adversarial_sections_len = 0
 
-            # binary.optional_header.dll_characteristics &= ~lief.PE.DLL_CHARACTERISTICS.DYNAMIC_BASE
-            # binary.optional_header.dll_characteristics &= ~lief.PE.DLL_CHARACTERISTICS.NX_COMPAT
+    #         # binary.optional_header.dll_characteristics &= ~lief.PE.DLL_CHARACTERISTICS.DYNAMIC_BASE
+    #         # binary.optional_header.dll_characteristics &= ~lief.PE.DLL_CHARACTERISTICS.NX_COMPAT
 
-            if imports_state:
-                imports = [lib.name.lower() + ':' +
-                           e.name for lib in binary.imports for e in lib.entries]
-                imports = process_imported_functions_output(imports)
-                imports_len = len(imports)
-                adversarial_imports_len = len(adversarial_imports_set[index])
+    #         if imports_state:
+    #             imports = [lib.name.lower() + ':' +
+    #                        e.name for lib in binary.imports for e in lib.entries]
+    #             imports = process_imported_functions_output(imports)
+    #             imports_len = len(imports)
+    #             adversarial_imports_len = len(adversarial_imports_set[index])
 
-                logging.debug(
-                    "Number of imports in original : " + str(imports_len))
-                logging.debug("Number of imports in adversial : " +
-                              str(adversarial_imports_len))
+    #             logging.debug(
+    #                 "Number of imports in original : " + str(imports_len))
+    #             logging.debug("Number of imports in adversial : " +
+    #                           str(adversarial_imports_len))
 
-                imports_to_be_added = list(
-                    set(adversarial_imports_set[index]).difference(set(imports)))
-                logging.debug("Number of imports to be added : " +
-                              str(len(imports_to_be_added)))
+    #             imports_to_be_added = list(
+    #                 set(adversarial_imports_set[index]).difference(set(imports)))
+    #             logging.debug("Number of imports to be added : " +
+    #                           str(len(imports_to_be_added)))
 
-                import_count = 0
-                import_threshold = random.randrange(40)
+    #             import_count = 0
+    #             import_threshold = random.randrange(40)
 
-                if len(imports_to_be_added):
-                    for lib_func in (imports_to_be_added):
+    #             if len(imports_to_be_added):
+    #                 for lib_func in (imports_to_be_added):
 
-                        if import_count > import_threshold:
-                            break
+    #                     if import_count > import_threshold:
+    #                         break
 
-                        library, function_name = lib_func.split(':')
-                        logging.debug("import --> " + lib_func)
-                        logging.debug("\tlibrary --> " + library)
-                        logging.debug("\tFunctionname --> " + function_name)
+    #                     library, function_name = lib_func.split(':')
+    #                     logging.debug("import --> " + lib_func)
+    #                     logging.debug("\tlibrary --> " + library)
+    #                     logging.debug("\tFunctionname --> " + function_name)
 
-                        lib = binary.add_library(library)
-                        lib.add_entry(function_name)
+    #                     lib = binary.add_library(library)
+    #                     lib.add_entry(function_name)
 
-                else:
-                    logging.debug("There are no new imports to be added ...")
+    #             else:
+    #                 logging.debug("There are no new imports to be added ...")
 
-            if section_state:
-                sections = [section.name for section in binary.sections]
-                section_len = len(sections)
-                adversarial_sections_len = len(adversarial_sections_set[index])
+    #         if section_state:
+    #             sections = [section.name for section in binary.sections]
+    #             section_len = len(sections)
+    #             adversarial_sections_len = len(adversarial_sections_set[index])
 
-                logging.debug(
-                    "Number of sections in original : " + str(section_len))
-                logging.debug("Number of section in adversial : " +
-                              str(adversarial_sections_len))
+    #             logging.debug(
+    #                 "Number of sections in original : " + str(section_len))
+    #             logging.debug("Number of section in adversial : " +
+    #                           str(adversarial_sections_len))
 
-                sections_to_be_added = list(
-                    set(adversarial_sections_set[index]).difference(set(sections)))
-                logging.debug("Number of sections to be added : " +
-                              str(len(sections_to_be_added)))
+    #             sections_to_be_added = list(
+    #                 set(adversarial_sections_set[index]).difference(set(sections)))
+    #             logging.debug("Number of sections to be added : " +
+    #                           str(len(sections_to_be_added)))
 
-                section_count = 0
-                sections_threshold = random.randrange(60)
+    #             section_count = 0
+    #             sections_threshold = random.randrange(60)
 
-                if len(sections_to_be_added):
-                    for sec in (sections_to_be_added):
+    #             if len(sections_to_be_added):
+    #                 for sec in (sections_to_be_added):
 
-                        if section_count > sections_threshold:
-                            break
+    #                     if section_count > sections_threshold:
+    #                         break
 
 
-                        if len(sec) > 6:
-                            continue
+    #                     if len(sec) > 6:
+    #                         continue
 
-                        logging.debug("section --> " + sec)
-                        new_section = lief.PE.Section(sec)
-                        # new_section.content = [0xCC] * 0x1000
+    #                     logging.debug("section --> " + sec)
+    #                     new_section = lief.PE.Section(sec)
+    #                     # new_section.content = [0xCC] * 0x1000
 
-                        # fill with random content
-                        upper = random.randrange(256)
-                        L = random.randrange(100000)
-                        new_section.content = [random.randint(0, upper) for _ in range(L)]
+    #                     # fill with random content
+    #                     upper = random.randrange(256)
+    #                     L = random.randrange(100000)
+    #                     new_section.content = [random.randint(0, upper) for _ in range(L)]
 
-                        # new_section.virtual_address = max(
-                        #     [s.virtual_address + s.size for s in binary.sections])
-                        # add a new empty section
+    #                     # new_section.virtual_address = max(
+    #                     #     [s.virtual_address + s.size for s in binary.sections])
+    #                     # add a new empty section
 
-                        binary.add_section(new_section,
-                           random.choice([
-                               lief.PE.SECTION_TYPES.BSS,
-                               lief.PE.SECTION_TYPES.DATA,
-                               lief.PE.SECTION_TYPES.EXPORT,
-                               lief.PE.SECTION_TYPES.IDATA,
-                               lief.PE.SECTION_TYPES.RELOCATION,
-                               lief.PE.SECTION_TYPES.RESOURCE,
-                               lief.PE.SECTION_TYPES.TEXT,
-                               lief.PE.SECTION_TYPES.TLS_,
-                               lief.PE.SECTION_TYPES.UNKNOWN,
-                           ]))
+    #                     binary.add_section(new_section,
+    #                        random.choice([
+    #                            lief.PE.SECTION_TYPES.BSS,
+    #                            lief.PE.SECTION_TYPES.DATA,
+    #                            lief.PE.SECTION_TYPES.EXPORT,
+    #                            lief.PE.SECTION_TYPES.IDATA,
+    #                            lief.PE.SECTION_TYPES.RELOCATION,
+    #                            lief.PE.SECTION_TYPES.RESOURCE,
+    #                            lief.PE.SECTION_TYPES.TEXT,
+    #                            lief.PE.SECTION_TYPES.TLS_,
+    #                            lief.PE.SECTION_TYPES.UNKNOWN,
+    #                        ]))
 
-                        section_count += 1
+    #                     section_count += 1
 
-                else:
-                    logging.debug("There are no new imports to be added ...")
+    #             else:
+    #                 logging.debug("There are no new imports to be added ...")
 
-            builder = lief.PE.Builder(binary)
-            builder.build_dos_stub(False)  # rebuild DOS stub
+    #         builder = lief.PE.Builder(binary)
+    #         builder.build_dos_stub(False)  # rebuild DOS stub
 
-            builder.build_imports(imports_state)  # rebuild IAT in another section
-            # patch original import table with trampolines to new import table
-            builder.patch_imports(imports_state)
+    #         builder.build_imports(imports_state)  # rebuild IAT in another section
+    #         # patch original import table with trampolines to new import table
+    #         builder.patch_imports(imports_state)
 
-            builder.build_overlay(False)  # rebuild overlay
-            # rebuild relocation table in another section
-            builder.build_relocations(False)
-            # rebuild resources in another section
-            builder.build_resources(False)
-            builder.build_tls(False)  # rebuilt TLS object in another section
+    #         builder.build_overlay(False)  # rebuild overlay
+    #         # rebuild relocation table in another section
+    #         builder.build_relocations(False)
+    #         # rebuild resources in another section
+    #         builder.build_resources(False)
+    #         builder.build_tls(False)  # rebuilt TLS object in another section
 
-            logging.debug("Building binary ...")
-            builder.build()  # perform the build process
+    #         logging.debug("Building binary ...")
+    #         builder.build()  # perform the build process
 
-            malware_file = os.path.join(
-                output_path, "PE _generated_" + str(index) + ".exe")
-            builder.write(malware_file)
-            logging.debug("Binary has been generated at : " +
-                          str(malware_file))
+    #         malware_file = os.path.join(
+    #             output_path, "PE _generated_" + str(index) + ".exe")
+    #         builder.write(malware_file)
+    #         logging.debug("Binary has been generated at : " +
+    #                       str(malware_file))
 
-    except:
-        logging.exception(
-            "Exception raised at adversial feature no : " + str(index))
-        raise Exception("%s is not parseable!" % malware_pe)
+    # except:
+    #     logging.exception(
+    #         "Exception raised at adversial feature no : " + str(index))
+    #     raise Exception("%s is not parseable!" % malware_pe)
 
     logging.info("Malware samples generation completed ...")
     pass
@@ -559,8 +557,8 @@ def main():
         feature_mapping = Path("feature_vector_directory/import_feature_vector_mapping.pk")
         # logging.debug("Feature Mapping : " + str(feature_mapping))
     else:
-        adversarial_vector = str(args.adversarial_vector) 
-        feature_mapping = str(args.feature_mapping)
+        adversarial_vector = args.adversarial_vector
+        feature_mapping = args.feature_mapping
 
     logging.info("Setting parameters ...")
     logging.info("\tOriginal Malware PE binary - " + str(args.malware_file))

@@ -89,10 +89,13 @@ The following steps will guide you through all the installations required to set
     
     > Install lief for Python 3.7 using the following command.
       `pip install https://github.com/lief-project/packages/raw/lief-master-latest/pylief-0.9.0.dev.zip`
+    
 
 ## Running Instructions
 
 ### Training Instructions
+
+> Note: If you wish to skip the training and jump directly to testing our trained model [click here](#testing-instructions)
 
 1. Feature extraction and feature mapping vector generation.
 
@@ -138,9 +141,18 @@ The following steps will guide you through all the installations required to set
    > For example: If you have generated a adversarial feature vector of only the sections, make sure to add the command `--feature-vector section` to correctly reconstruct the section name.
    
    + The `binary_builder.py` python script outputs the `adversarial_imports_set.pk` or the `adversarial_section_set.pk`, based on the feature mapping you select, in the `adversarial_feature_vector_directory` directory. 
+   
+1. To access the samples that includes unpacked backdoors from VirusTotal, login to the google account ()
+
 ### Testing Instructions
 
-1. 
+The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 100 (50%) of mutated samples, the training stops and saves the model as dqeaf.pt which is used by the testing script.
+
+1. Create a new directory 'testing-samples' and copy your test samples in it. 
+
+2. python dqeaf-test.py testing-samples
+
+3. The mutated malware samples will be stored in the evaded-samples directory.
 
 
 
@@ -160,7 +172,10 @@ The following steps will guide you through all the installations required to set
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
+* **Bedang Sen** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Bednag Sen](http://github.com/bedangSen/)
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
