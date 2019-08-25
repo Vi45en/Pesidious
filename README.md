@@ -83,7 +83,7 @@ pip install pip==8.1.1
         ```sh
         source test_env/bin/activate
         ```    
-   4. Test out the version of your virtualenv environment to confirm it is in Python3.7.     
+   4. Test out the version of your virtualenv environment to confirm it is in Python3.6.     
            
    ```sh
    python --version
@@ -180,7 +180,66 @@ In order to run the testing environment make sure you have more than 200 malware
 
 ## Training and Testing Data
 
-If you have a VirusTotal API key, you may download samples to the `gym_malware/gym_malware/envs/utils/samples/` using the Python script `download_samples.py`.
+1. In order to train the Generative Adversarial Network and Reinforcement Learning agents, a large dataset of malicious and benign binaries are required. For that purpose we are sharing the dataset that we have collected.
+
+   + **1682 Benign binaries** - _Scraped from our host computers_.
+   + **2094 Malware binaries** - _Downloaded from VirusTotal_.
+   + **
+
+1. Downaload the training dataset from [here]()
+
+1. Once you have downloaded the datasets, take care to place the files in the right directory in order to run the application with no errors. 
+
+   1. Keep the downloaded folder `Data` in the root directory `tAIchi`. 
+   
+      ```
+      Data/
+       ├── benign
+       │   ├── 1PasswordSetup-7.3.684.exe
+       │   ├── 2to3.exe
+       │   ├── 32BitMAPIBroker.exe       
+       │   ├──    :
+       │   ├──    :
+       │   ├──    :
+       │   |__ 7za.exe
+       ├___malware
+           ├── ffe96cd96a91fead84aee17d2c0617193ec183ddbf630b29eebbd1235e26227c
+           ├── ffe5bcd034ceeca05f47ddb17f13b46188d5832668388e0badda7e8440f1730e
+           ├── ffc0f4ed76db8ec2a050f2c36106387f473babf3c83c7c5b7c42706b3dac8782
+           ├──    :
+           ├──    :
+           ├──    :
+           |__ ff8f9699842bb44ef038ca7f675c9cc90ab8f00bc81564fa87f12d700e0040fb
+      ```
+      
+   1. Download the backdoor malware binary dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/Eba11TVqORhCigT0Mg_hS4IBw2B7PK2eRJWwqmqm9wR1LA?e=STnjmA) and place the **files** into the `gym_malware/envs/utils/samples` directory as illustrated below:
+   
+      ```
+      gym_malware/
+       ├── envs
+       │   ├── controls
+       │   ├──    :
+       │   ├──    :
+       │   ├──    :
+       │   └── utils
+       │       ├── gradient_boosting.pkl
+       │       ├──    :
+       │       ├──    :       
+       │       ├──    :
+       │       ├──    :
+       │       ├──    :
+       │       └── samples
+       │           ├── e2ec96f7f0aacc20a0773142ce553585cf60804a8046c8164b0e9661c282869f
+       │           ├── e2efec50227a549dadfe8dfcfed74b8c5d8857c431479e9891232fb568b038b9
+       │           ├── e2f24c60448f81be8dc7ee5a6457327976483f9ab96ab8925da5ef6df3808c42
+       │           ├── e3045dc6d4c2bbd682ddbe06b8952ae1341ad9521aff44136bab9f1e876a8248
+       │           ├── e3059a70215078415b7d61b52bf6056a9575176197b7a16809b396ab4d43743b
+       │           ├── e30ac19107ad669a13a151b3be16cf2cc735e0c18aa8b6d096e1c88411f6a21a
+       │           ├── e30c91a7c37687e5e8305e0b8936ad84d0710ecca9cba7e0d6e07c963f6f9fdb
+       │           ├── e3107121e6e515f84597b1e65bd92516327c5fffa9e80068b0e1c60d596568a1
+      ```
+   
+   
 
 ## Testing Procedures and Results
 
@@ -206,10 +265,6 @@ If you have a VirusTotal API key, you may download samples to the `gym_malware/g
 <p align="center">
  <img src="https://lh3.googleusercontent.com/QtenUP6It_5W4Pysmr1TKZ1HlYdh9Q9cJ7F8gQ_rneb3lwkMnnwzMdtnXfY3r3dwJcFyb3_O4AwEDOflg4LVMkdeI6KdiGBWDytBjAPGuONk6q5mN7gTMVMeRj3i384NtuE1TpHe" align="middle">
 </p>
-
-
-
-
 
 
 ## To Do
