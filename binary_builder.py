@@ -118,11 +118,11 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
 
     if not os.path.exists(str(output_path)):
         logging.info("Constructing output directory ...")
-        os.makedirs(output_path)
+        os.makedirs(str(output_path))
 
     if not os.path.exists(str(RL_features)):
         logging.info("Contruncting RL Features directory ...")
-        os.mkdir(RL_features)
+        os.mkdir(str(RL_features))
 
     logging.info("Constructing features from adversarially generated feature vectors ...")
 
@@ -133,7 +133,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         output_path = os.path.join(output_path, "Sections")
         if not os.path.exists(str(output_path)):
             logging.info("Constructing output directory for Sections...")
-            os.makedirs(output_path)
+            os.makedirs(str(output_path))
             
         logging.info("Constructing section list ...")
         adversarial_sections_set = section_extractor(
@@ -150,7 +150,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         output_path = os.path.join(output_path, "Imports")
         if not os.path.exists(str(output_path)):
             logging.info("Constructing output directory for Imports...")
-            os.makedirs(output_path)
+            os.makedirs(str(output_path))
 
         logging.info("Constructing imports list ...")
         adversarial_imports_set = import_extractor(
@@ -167,7 +167,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         output_path = os.path.join(output_path, "features")
         if not os.path.exists(str(output_path)):
             logging.info("Constructing output directory ...")
-            os.makedirs(output_path)
+            os.makedirs(str(output_path))
 
         logging.info("Constructing section and imports list ...")
         adversarial_imports_set, adversarial_sections_set = features_extractor(
