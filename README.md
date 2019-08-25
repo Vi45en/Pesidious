@@ -24,19 +24,6 @@ The project built on Python3.6 we recommend first creating a virtualenv (details
 ```sh
 pip install -r requirements.txt
 ```
-It also uses LIEF to parse and modify malware. 
-
-[LIEF]: https://github.com/lief-project/LIEF
-
-Linux
-```
-pip install https://github.com/lief-project/LIEF/releases/download/0.7.0/linux_lief-0.7.0_py3.6.tar.gz
-```
-
-OSX
-```
-pip install https://github.com/lief-project/LIEF/releases/download/0.7.0/osx_lief-0.7.0_py3.6.tar.gz
-```
 
 Resources
 ====
