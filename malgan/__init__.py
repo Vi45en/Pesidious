@@ -407,7 +407,7 @@ class MalGAN(nn.Module):
             msg = "Malware signature changed to 0 which is not allowed"
             assert torch.sum(m_diff < -0.1) == 0, msg
         avg_changed_bits = torch.cat(bits_changed).mean()
-        pickle.dump(m_prime_arr, open("adversarial_feature_array_set.pk", 'wb'))
+        pickle.dump(m_prime_arr, open(os.path.join(adversarial_feature_vector_directory, "adversarial_feature_array_set.pk"), 'wb'))
         logging.debug("Avg. Malware Bits Changed Changed: %2f", avg_changed_bits)
 
         # BB prediction of the malware before the generator
