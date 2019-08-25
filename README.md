@@ -144,12 +144,26 @@ The following steps will guide you through all the installations required to set
    
    + The `binary_builder.py` python script outputs the `adversarial_imports_set.pk` or the `adversarial_section_set.pk`, based on the feature mapping you select, in the `adversarial_feature_vector_directory` directory. 
    
-1. To access the samples that includes unpacked backdoors from VirusTotal, login to the google account ()
 
 ### Testing Instructions
 
+The output from GAN has already been stored as (gym_malware/envs/controls/adverarial_imports_set.pk and gym_malware/envs/controls/adverarial_sections_set.pk) and is being used for the training. 
+
 The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 100 (50%) of mutated samples, the training stops and saves the model as dqeaf.pt which is used by the testing script.
 
+## Environment 
+
+1. Make sure that you have pip 8.1.1 and python3.6 installed for the program to run. 
+
+2. Create a virtual envrionment as given [here](https://docs.python.org/3/tutorial/venv.html). 
+
+3. Install the requirements using the following command : 
+
+```
+pip install -r requirements_rl.txt
+```
+
+## Execution
 1. Create a new directory 'testing-samples' and copy your test samples in it. 
 
 2. python dqeaf-test.py testing-samples
