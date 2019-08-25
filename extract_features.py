@@ -75,7 +75,7 @@ def logging_setup(detailed_log: bool, logfile: str , log_level: int):
     logging.info("\n\nStarting Feature Extraction Program ...")    
 
 
-def features_mapping_index(malware_path: Path, benign_path: Path, output_path: Path, generate_features: bool):
+def features_mapping_index(malware_path: str, benign_path: str, output_path: str, generate_features: bool):
 
     logging.info("Setting up output directories ...")
 
@@ -382,7 +382,7 @@ def main():
     logging.debug("\tGenerate Features - " + str(args.generate_features))
 
     logging.debug((args.malware_path))
-    features_mapping_index((args.malware_path), str(args.benign_path), str(args.output_dir), args.generate_features)
+    features_mapping_index(str(args.malware_path), str(args.benign_path), str(args.output_dir), args.generate_features)
     pass
 
 if __name__ == "__main__":

@@ -557,8 +557,8 @@ def main():
         feature_mapping = Path("feature_vector_directory/import_feature_vector_mapping.pk")
         # logging.debug("Feature Mapping : " + str(feature_mapping))
     else:
-        adversarial_vector = str(args.adversarial_vector) 
-        feature_mapping = str(args.feature_mapping)
+        adversarial_vector = args.adversarial_vector
+        feature_mapping = args.feature_mapping
 
     logging.info("Setting parameters ...")
     logging.info("\tOriginal Malware PE binary - " + str(args.malware_file))
