@@ -103,7 +103,7 @@ The following steps will guide you through all the installations required to set
    python extract_features.py
    ```
    
-      Using a CLI                                     | Command                                 | Notes
+      Command Name                                     | Command                                 | Description
    :---------------------------------------------- | :-------------------------------------- | :----
    Help                                            | `command -h` or `command --help`        | Display the help message and exit.
    Malware Path                                    | `command -m` or `command --malware-path`| The filepath of the malicious PE files whose features are to be extracted. [default = `Data/malware`]
@@ -114,9 +114,9 @@ The following steps will guide you through all the installations required to set
    Log Level                                       | `command -l` or `command --log-level    | Set the severity level of logs you want to collect. By default, the logging module logs the messages with a severity level of WARNING or above. Valid choices (Enter the numeric values) are: "[10] - DEBUG, [20] - INFO, [30] - WARNING, [40] - ERROR and [50] - CRITICAL. [default = `logging.INFO`].
    
    + The `extract_features.py` python script outputs the following files in the output directory:
-      + *Features Vector Mapping* - _feature_vector_mapping.pk_, _import_feature_vector_mapping.pk_ and _section_feature_vector_mapping.pk_
-      + *Malware Feature Vectors* - _malware-feature-set.pk_, _malware-pe-files-import-feature-set.pk_ and _malware-pe-files-section-feature-set.pk_
-      + *Benign Feature Vectors* - benign-feature-set.pk_, _benign-pe-files-import-feature-set.pk_ and _benign-pe-files-section-feature-set.pk_
+      + **Features Vector Mapping** - _feature_vector_mapping.pk_, _import_feature_vector_mapping.pk_ and _section_feature_vector_mapping.pk_
+      + **Malware Feature Vectors** - _malware-feature-set.pk_, _malware-pe-files-import-feature-set.pk_ and _malware-pe-files-section-feature-set.pk_
+      + **Benign Feature Vectors** - benign-feature-set.pk_, _benign-pe-files-import-feature-set.pk_ and _benign-pe-files-section-feature-set.pk_
 
 1. Malware feature vector mutation using Generative Adversarial Networks. 
 
@@ -127,19 +127,18 @@ The following steps will guide you through all the installations required to set
    ```
    > For more information,[see below.](#acknowledgements)
    
-       Using a CLI                                     | Command                                 | Notes
-   :---------------------------------------------- | :-------------------------------------- | :----
-   Help                                            | `command -h` or `command --help`        | Display the help message and exit.
-   Z - Noise Vector                                |                                         | Dimension of the latent vector.
-   BATCH_SIZE - Batch Size                         |                                         | Batch size.
-   NUM_EPOCHS - Number of Epochs                   |                                         | Number of training epochs.
-   MALWARE_FILE - Malware Feature Vectors          |                                         | Data file contacting the malware feature vectors.
-   BENIGN_FILE - Benign Feature Vectors            |                                         | Data file contacting the benign feature vectors.
-   GEN_HIDDEN_SIZES - Generator Hidden Layer Size  | `command --gen-hidden-sizes`            | Dimension of the hidden layer(s) in the GENERATOR.Multiple layers should be space separated. [default: [256, 256]].
-   DISCRIM_HIDDEN_SIZES - Discriminator HL size    | `command --discrim-hidden-sizes`        | Dimension of the hidden layer(s) in the DISCRIMINATOR.Multiple layers should be space separated [default: [256, 256]].
-   ACTIVATION - Activation Function                | `command --activation`                  | Activation function for the generator and discriminatior hidden layer(s). Valid choices (case insensitive) are: "ReLU", "ELU", "LeakyReLU", "tanh" and "sigmoid". (default: LeakyReLU).
-   DETECTOR - Detector Algorithm                   | `command --detector`                    | Learner algorithm used in the black box detector. Valid choices (case insensitive) include: "DecisionTree", "LogisticRegression", "MultiLayerPerceptron", "RandomForest", and "SVM". (default: RandomForest).
-   
+   | Command Name         | Command                          | Description                                                                                                                                                              |
+   |----------------------|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+   | Help                 | `command -h` or `command --help` | Display the help message and exit.                                                                                                                                       |
+   | Z                    |                                  | Dimension of the latent vector.                                                                                                                                          |
+   | BATCH_SIZE           |                                  | Batch size.                                                                                                                                                              |
+   | NUM_EPOCHS           |                                  | Number of training epochs.                                                                                                                                               |
+   | MALWARE_FILE         |                                  | Data file contacting the malware.                                                                                                                                        |
+   | BENIGN_FILE          |                                  | Data file contacting the benign.                                                                                                                                         |
+   | GEN_HIDDEN_SIZES     | `command --gen-hidden-sizes`     | Dimension of the hidden layer(s) in the GENERATOR.Multiple layers should be space separated. [default: [256, 256]].                                                      |
+   | DISCRIM_HIDDEN_SIZES | `command --discrim-hidden-sizes` | Dimension of the hidden layer(s) in the DISCRIMINATOR.Multiple layers should be space separated [default: [256, 256]].                                                   |
+   | ACTIVATION           | `command --activation`           | Activation function for the generator and discriminatior hidden layer(s). LeakyReLU).                                                                                    |
+   | DETECTOR             | `command --detector              | Learner algorithm used in the black box detector. Valid choices (case insensitive) "DecisionTree", ""MultiLayerPerceptron", "RandomForest", and "(default: RandomForest) |
 
 ### Testing Instructions
 
