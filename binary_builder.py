@@ -199,9 +199,8 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
             adversarial_imports_len = 0
             adversarial_sections_len = 0
 
-            binary.optional_header.dll_characteristics &= ~lief.PE.DLL_CHARACTERISTICS.DYNAMIC_BASE
-            binary.optional_header.dll_characteristics &= ~lief.PE.DLL_CHARACTERISTICS.NX_COMPAT
-
+            # binary.optional_header.dll_characteristics &= ~lief.PE.DLL_CHARACTERISTICS.DYNAMIC_BASE
+            # binary.optional_header.dll_characteristics &= ~lief.PE.DLL_CHARACTERISTICS.NX_COMPAT
 
             if imports_state:
                 imports = [lib.name.lower() + ':' +
