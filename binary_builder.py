@@ -116,11 +116,11 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
 
     RL_features = "RL_Features"
 
-    if not os.path.exists(output_path):
+    if not os.path.exists(str(output_path)):
         logging.info("Constructing output directory ...")
         os.makedirs(output_path)
 
-    if not os.path.exists(RL_features):
+    if not os.path.exists(str(RL_features)):
         logging.info("Contruncting RL Features directory ...")
         os.mkdir(RL_features)
 
@@ -131,7 +131,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         section_state = True
         
         output_path = os.path.join(output_path, "Sections")
-        if not os.path.exists(output_path):
+        if not os.path.exists(str(output_path)):
             logging.info("Constructing output directory for Sections...")
             os.makedirs(output_path)
             
@@ -148,7 +148,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         imports_state = True
 
         output_path = os.path.join(output_path, "Imports")
-        if not os.path.exists(output_path):
+        if not os.path.exists(str(output_path)):
             logging.info("Constructing output directory for Imports...")
             os.makedirs(output_path)
 
@@ -165,7 +165,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
         section_state = True
 
         output_path = os.path.join(output_path, "features")
-        if not os.path.exists(output_path):
+        if not os.path.exists(str(output_path)):
             logging.info("Constructing output directory ...")
             os.makedirs(output_path)
 
