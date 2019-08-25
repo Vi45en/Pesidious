@@ -95,6 +95,8 @@ The following steps will guide you through all the installations required to set
 
 ### Training Instructions
 
+> :warning: WARNING: This segment is currently under some modification. Please proceed to the next section. 
+
 > Note: If you wish to skip the training and jump directly to testing our trained model [click here](#testing-instructions)
 
 1. Feature extraction and feature mapping vector generation.
