@@ -144,6 +144,8 @@ The following steps will guide you through all the installations required to set
    
    + The `binary_builder.py` python script outputs the `adversarial_imports_set.pk` or the `adversarial_section_set.pk`, based on the feature mapping you select, in the `adversarial_feature_vector_directory` directory. 
    
+1. > There is one last step here. Soon to be completed. 
+   
 
 ### Testing Instructions
 
@@ -151,13 +153,13 @@ The output from GAN has already been stored as (gym_malware/envs/controls/advera
 
 The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 100 (50%) of mutated samples, the training stops and saves the model as dqeaf.pt which is used by the testing script.
 
-## Environment 
+#### Environment 
 
 1. Make sure that you have pip 8.1.1 and python3.6 installed for the program to run. 
 
-2. Create a virtual envrionment as given [here](https://docs.python.org/3/tutorial/venv.html). 
+1. Create a virtual envrionment as given [here](https://docs.python.org/3/tutorial/venv.html). 
 
-3. Install the requirements using the following command : 
+1. Install the requirements using the following command : 
 
 ```
 pip install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
