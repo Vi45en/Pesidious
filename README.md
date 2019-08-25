@@ -31,12 +31,7 @@ The proposed solution successfully generates a mutated malware sample by using r
 
 ## Installation Instructions
 
-The project built on Python3.6 we recommend first creating a virtualenv (details can be found [here]) with Python3.6 then performing the following actions ensure you have the correct python libraries:
 
-[here]: https://docs.python.org/3/tutorial/venv.html
-```sh
-pip install -r requirements.txt
-```
 
 1. Install and set up Python 3. ([Installation Instructions])(https://realpython.com/installing-python/)
 
