@@ -102,17 +102,7 @@ The following steps will guide you through all the installations required to set
    ```sh
    python extract_features.py
    ```
-   
-      Command Name                                     | Command                                 | Description
-   :---------------------------------------------- | :-------------------------------------- | :----
-   Help                                            | `command -h` or `command --help`        | Display the help message and exit.
-   Malware Path                                    | `command -m` or `command --malware-path`| The filepath of the malicious PE files whose features are to be extracted. [default = `Data/malware`]
-   Benign Path                                     | `command -b` or `command --benign-path` | The filepath of the benign PE files whose features are to be extracted. [default = `Data/benign`]
-   Output Directory                                | `command -o` or `command --output-dir`  | The filepath to where the feature vectors will be extracted. If this location does not exist, it will be created. [default = `feature_vector_directory`].
-   Detailed Logs                                   | `command -d` or `command --detailed-log`| Display the debug logs on console. [default = `False`].
-   Log File                                        | `command -f` or `command --logfile      | The file path to store the logs. [default = `extract_features_logs.txt`.
-   Log Level                                       | `command -l` or `command --log-level    | Set the severity level of logs you want to collect. By default, the logging module logs the messages with a severity level of WARNING or above. Valid choices (Enter the numeric values) are: "[10] - DEBUG, [20] - INFO, [30] - WARNING, [40] - ERROR and [50] - CRITICAL. [default = `logging.INFO`].
-   
+    
    + The `extract_features.py` python script outputs the following files in the output directory:
       + **Features Vector Mapping** - _feature_vector_mapping.pk_, _import_feature_vector_mapping.pk_ and _section_feature_vector_mapping.pk_
       + **Malware Feature Vectors** - _malware-feature-set.pk_, _malware-pe-files-import-feature-set.pk_ and _malware-pe-files-section-feature-set.pk_
@@ -127,19 +117,23 @@ The following steps will guide you through all the installations required to set
    ```
    > For more information,[see below.](#acknowledgements)
    
-   | Command Name         | Command                          | Description                                                                                                                                                              |
-   |----------------------|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-   | Help                 | `command -h` or `command --help` | Display the help message and exit.                                                                                                                                       |
-   | Z                    |                                  | Dimension of the latent vector.                                                                                                                                          |
-   | BATCH_SIZE           |                                  | Batch size.                                                                                                                                                              |
-   | NUM_EPOCHS           |                                  | Number of training epochs.                                                                                                                                               |
-   | MALWARE_FILE         |                                  | Data file contacting the malware.                                                                                                                                        |
-   | BENIGN_FILE          |                                  | Data file contacting the benign.                                                                                                                                         |
-   | GEN_HIDDEN_SIZES     | `command --gen-hidden-sizes`     | Dimension of the hidden layer(s) in the GENERATOR.Multiple layers should be space separated. [default: [256, 256]].                                                      |
-   | DISCRIM_HIDDEN_SIZES | `command --discrim-hidden-sizes` | Dimension of the hidden layer(s) in the DISCRIMINATOR.Multiple layers should be space separated [default: [256, 256]].                                                   |
-   | ACTIVATION           | `command --activation`           | Activation function for the generator and discriminatior hidden layer(s). LeakyReLU).                                                                                    |
-   | DETECTOR             | `command --detector              | Learner algorithm used in the black box detector. Valid choices (case insensitive) "DecisionTree", ""MultiLayerPerceptron", "RandomForest", and "(default: RandomForest) |
+   + Pass either one of the three feature vectors to the `MALWARE_FILE` and `BENIGN_FILE` arguments to generate a feature vector of the respective input.  
+   
+   >  For example: If you pass `benign-pe-files-import-feature-set.pk` and `malware-pe-files-import-feature-set.pk` as arguments, you will generate an adversarial feature vector `adversarial_feature_array_set.pk` that only contains the imports and not the sections or both.
+   > CAUTION: Pass feature vectors of the same type as arguments for non-erratic results. 
+     
+   + The `main_malgan.py` python script outputs the `adversarial_feature_array_set.pk` in the `adversarial_feature_vector_directory` directory.
+   
+   
+1. Binary Imports and Section Reconstruction.
 
+   + Once we have the adversarial feature vector from the MalGAN, we can feed it the `binary_builder.py` python script which uses the original feature mapping vector from step 1 to map the adversarial features back to the import functions and section names. 
+   
+   ```sh
+   python binary_builder
+   ```
+   
+   + 
 ### Testing Instructions
 
 1. 
