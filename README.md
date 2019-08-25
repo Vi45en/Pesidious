@@ -1,10 +1,21 @@
+
+
+
+
 # dqeaf-gym-malware 
 
 A malware mutation agent trained using deep reinforcement learning
 
+Solution Objective
+======
+Our solution makes use of a combination of deep reinforcement learning and GANs in order to overcome some of the limitations faced while using these approaches independently. 
+
 Overview
 ======
-The agent uses neural networks to mutate the malware by take the malware features as input and getting the action to perform as output. 
+The proposed solution successfully generates a mutated malware sample by using reinforcement learning to decide on the sequence of modifications to make. In case the modifications chosen by the RL agent is either adding import functions or adding/renaming section names, GANs are used to generate an adversarial feature vector of imports and sections that perturb a malware to appear benign in contrast to randomly selecting the imports and sections. 
+
+Results
+======
 
 
 Setup
