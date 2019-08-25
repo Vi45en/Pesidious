@@ -89,8 +89,8 @@ The following steps will guide you through all the installations required to set
     
     > Install lief for Python 3.7 using the following command.
       `pip install https://github.com/lief-project/packages/raw/lief-master-latest/pylief-0.9.0.dev.zip`
-    
-
+ 
+ 
 ## Running Instructions
 
 ### Training Instructions
