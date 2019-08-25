@@ -11,8 +11,8 @@ Find our full documentation [here](https://docs.google.com/document/d/1WDYrzpCX6
 
 + [Overview](#overview)
 + [Installation Instructions](#installing-instructions)
-+ [Running Instructions](#running-instructions)
 + [Training and Testing Data](#training-and-testing-data)
++ [Running Instructions](#running-instructions)
 + [Testing Procedures and results](#testing-procedures-and-results)
 + [Future Additions](#to-do)
 + [Built With](#built-with)
@@ -107,6 +107,72 @@ The following steps will guide you through all the installations required to set
     ```
      
  
+## Training and Testing Data
+
+### Training Data
+1. In order to train the Generative Adversarial Network and Reinforcement Learning agents, a large dataset of malicious and benign binaries are required. For that purpose we are sharing the dataset that we have collected.
+
+   + **1682 Benign binaries** - _Scraped from our host computers_.
+   + **2094 Malware binaries** - _Downloaded from VirusTotal_.
+
+1. Downaload the training dataset from [here](https://uowmailedu-my.sharepoint.com/:f:/g/personal/cvrv570_uowmail_edu_au/Ep8qkEt-XvFCiOBbQS9FynQBQh6gULH1RpoA9Wdlh8xn_A?e=VdjH1D)
+
+1. Once you have downloaded the datasets, take care to place the files in the right directory in order to run the application with no errors. 
+
+   1. Keep the downloaded folder `Data` in the root directory `tAIchi`. 
+   
+      ```
+      Data/
+       ├── benign
+       │   ├── 1PasswordSetup-7.3.684.exe
+       │   ├── 2to3.exe
+       │   ├── 32BitMAPIBroker.exe       
+       │   ├──    :
+       │   ├──    :
+       │   ├──    :
+       │   |__ 7za.exe
+       ├___malware
+           ├── ffe96cd96a91fead84aee17d2c0617193ec183ddbf630b29eebbd1235e26227c
+           ├── ffe5bcd034ceeca05f47ddb17f13b46188d5832668388e0badda7e8440f1730e
+           ├── ffc0f4ed76db8ec2a050f2c36106387f473babf3c83c7c5b7c42706b3dac8782
+           ├──    :
+           ├──    :
+           ├──    :
+           |__ ff8f9699842bb44ef038ca7f675c9cc90ab8f00bc81564fa87f12d700e0040fb
+      ```
+      
+   1. Download the backdoor malware binary dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/EXejpGJMibRAr0P35OnXmmUB5JX0fX33BSEN1CQQ_8fpDQ?e=8uTjPn) and place the **files** into the `gym_malware/envs/utils/samples` directory as illustrated below:
+   
+      ```
+      gym_malware/
+       ├── envs
+       │   ├── controls
+       │   ├──    :
+       │   ├──    :
+       │   ├──    :
+       │   └── utils
+       │       ├── gradient_boosting.pkl
+       │       ├──    :
+       │       ├──    :       
+       │       ├──    :
+       │       ├──    :
+       │       ├──    :
+       │       └── samples
+       │           ├── e2ec96f7f0aacc20a0773142ce553585cf60804a8046c8164b0e9661c282869f
+       │           ├── e2efec50227a549dadfe8dfcfed74b8c5d8857c431479e9891232fb568b038b9
+       │           ├── e2f24c60448f81be8dc7ee5a6457327976483f9ab96ab8925da5ef6df3808c42
+       │           ├── e3045dc6d4c2bbd682ddbe06b8952ae1341ad9521aff44136bab9f1e876a8248
+       │           ├── e3059a70215078415b7d61b52bf6056a9575176197b7a16809b396ab4d43743b
+       │           ├── e30ac19107ad669a13a151b3be16cf2cc735e0c18aa8b6d096e1c88411f6a21a
+       │           ├── e30c91a7c37687e5e8305e0b8936ad84d0710ecca9cba7e0d6e07c963f6f9fdb
+       │           ├── e3107121e6e515f84597b1e65bd92516327c5fffa9e80068b0e1c60d596568a1
+      ```
+   
+### Testing Data
+
+Download the backdoor malware binary testing dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/Eba11TVqORhCigT0Mg_hS4IBw2B7PK2eRJWwqmqm9wR1LA?e=STnjmA) and place the **files** into the `testing-samples` directory.
+
+ 
 ## Running Instructions
 
 ### Training Instructions
@@ -185,72 +251,6 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 1. The mutated malware samples will be stored in the `evaded-samples` directory.
 
 
-
-## Training and Testing Data
-
-### Training Data
-1. In order to train the Generative Adversarial Network and Reinforcement Learning agents, a large dataset of malicious and benign binaries are required. For that purpose we are sharing the dataset that we have collected.
-
-   + **1682 Benign binaries** - _Scraped from our host computers_.
-   + **2094 Malware binaries** - _Downloaded from VirusTotal_.
-   + **
-
-1. Downaload the training dataset from [here](https://uowmailedu-my.sharepoint.com/:f:/g/personal/cvrv570_uowmail_edu_au/Ep8qkEt-XvFCiOBbQS9FynQBQh6gULH1RpoA9Wdlh8xn_A?e=VdjH1D)
-
-1. Once you have downloaded the datasets, take care to place the files in the right directory in order to run the application with no errors. 
-
-   1. Keep the downloaded folder `Data` in the root directory `tAIchi`. 
-   
-      ```
-      Data/
-       ├── benign
-       │   ├── 1PasswordSetup-7.3.684.exe
-       │   ├── 2to3.exe
-       │   ├── 32BitMAPIBroker.exe       
-       │   ├──    :
-       │   ├──    :
-       │   ├──    :
-       │   |__ 7za.exe
-       ├___malware
-           ├── ffe96cd96a91fead84aee17d2c0617193ec183ddbf630b29eebbd1235e26227c
-           ├── ffe5bcd034ceeca05f47ddb17f13b46188d5832668388e0badda7e8440f1730e
-           ├── ffc0f4ed76db8ec2a050f2c36106387f473babf3c83c7c5b7c42706b3dac8782
-           ├──    :
-           ├──    :
-           ├──    :
-           |__ ff8f9699842bb44ef038ca7f675c9cc90ab8f00bc81564fa87f12d700e0040fb
-      ```
-      
-   1. Download the backdoor malware binary dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/EXejpGJMibRAr0P35OnXmmUB5JX0fX33BSEN1CQQ_8fpDQ?e=8uTjPn) and place the **files** into the `gym_malware/envs/utils/samples` directory as illustrated below:
-   
-      ```
-      gym_malware/
-       ├── envs
-       │   ├── controls
-       │   ├──    :
-       │   ├──    :
-       │   ├──    :
-       │   └── utils
-       │       ├── gradient_boosting.pkl
-       │       ├──    :
-       │       ├──    :       
-       │       ├──    :
-       │       ├──    :
-       │       ├──    :
-       │       └── samples
-       │           ├── e2ec96f7f0aacc20a0773142ce553585cf60804a8046c8164b0e9661c282869f
-       │           ├── e2efec50227a549dadfe8dfcfed74b8c5d8857c431479e9891232fb568b038b9
-       │           ├── e2f24c60448f81be8dc7ee5a6457327976483f9ab96ab8925da5ef6df3808c42
-       │           ├── e3045dc6d4c2bbd682ddbe06b8952ae1341ad9521aff44136bab9f1e876a8248
-       │           ├── e3059a70215078415b7d61b52bf6056a9575176197b7a16809b396ab4d43743b
-       │           ├── e30ac19107ad669a13a151b3be16cf2cc735e0c18aa8b6d096e1c88411f6a21a
-       │           ├── e30c91a7c37687e5e8305e0b8936ad84d0710ecca9cba7e0d6e07c963f6f9fdb
-       │           ├── e3107121e6e515f84597b1e65bd92516327c5fffa9e80068b0e1c60d596568a1
-      ```
-   
-### Testing Data
-
-Download the backdoor malware binary dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/Eba11TVqORhCigT0Mg_hS4IBw2B7PK2eRJWwqmqm9wR1LA?e=STnjmA) and place the **files** into the `gym_malware/testing-samples` directory.
 
 ## Testing Procedures and Results
 
