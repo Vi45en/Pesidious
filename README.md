@@ -51,7 +51,7 @@ The following steps will guide you through all the installations required to set
 1. Download malware and benign binary samples from [here](#training-and-testing-data).
 
 1. Make sure that you have pip 8.1.1 installed and set up.
-> This is due to later versions of pip not playing well with the PyTorch libary. 
+   > This is due to later versions of pip not playing well with the PyTorch libary. 
 
    ```sh
    pip install pip==8.1.1
@@ -65,12 +65,14 @@ The following steps will guide you through all the installations required to set
       pip install virtualenv
       ```
    
-   1. Create the virtual environment in Python 3.6.
+   1. Create the virtual environment in Python 3.6. Refer to this documumentation for more info [here](https://docs.python.org/3/tutorial/venv.html)
    
       ```sh
        virtualenv -p path\to\your\python.exe test_env
        ```    
        >Note: In Windows, your Python3.6 environment is most likely to be in the following directory: `C:\Python36\Python.exe`.
+       
+       > For 
    
    1. Activate the test environment.     
    
