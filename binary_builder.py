@@ -129,9 +129,7 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
     if feature_type.lower() == "section":
         
         section_state = True
-        adversarial_vector = Path("adversarial_feature_vector_directory\sections_adversarial_feature_array_set.pk")
-        feature_mapping = Path("feature_vector_directory\section_feature_vector_mapping.pk")
-        
+
         output_path = os.path.join(output_path, "Sections")
         if not os.path.exists(str(output_path)):
             logging.info("Constructing output directory for Sections...")
@@ -544,11 +542,21 @@ def main():
 
     logging_setup(args.detailed_log, args.logfile, args.log_level)
 
+    if str(args.feature_vector).lower() == "section":
+        adversarial_vector = Path("adversarial_feature_vector_directory/sections_adversarial_feature_array_set.pk")
+        feature_mapping = Path("feature_vector_directory/section_feature_vector_mapping.pk")
+    elif str(args.feature_vector).lower() == "imports":
+        adversarial_vector = Path("adversarial_feature_vector_directory\imports_adversarial_feature_array_set.pk")
+        feature_mapping = Path("feature_vector_directory\import_feature_vector_mapping.pk")
+    else:
+        adversarial_vector = str(args.adversarial_vector) 
+        feature_mapping = str(args.feature_mapping)
+
     logging.info("Setting parameters ...")
     logging.info("\tOriginal Malware PE binary - " + str(args.malware_file))
     logging.info("\tAdversarially generated malware Feature Vector - " +
-                 str(args.adversarial_vector))
-    logging.info("\tFeature Vector Mapping - " + str(args.feature_mapping))
+                 adversarial_vector)
+    logging.info("\tFeature Vector Mapping - " + feature_mapping)
     logging.info("\tOutput Directory - " + str(args.output_dir))
 
     logging.info("\tLogfile - " + str(args.logfile))
@@ -556,8 +564,8 @@ def main():
     logging.info("\tDetailed Log - " + str(args.detailed_log))
     logging.info("\tFeature vector type - " + str(args.feature_vector))
 
-    binary_builder(args.malware_file, args.adversarial_vector,
-                   args.feature_mapping, args.output_dir, args.feature_vector)
+    binary_builder(args.malware_file, adversarial_vector,
+                   feature_mapping, args.output_dir, args.feature_vector)
     # send_to_sandbox(args.output_dir)
     
     pass
