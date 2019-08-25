@@ -287,7 +287,7 @@ class MalGAN(nn.Module):
         """
         backup_name = self._build_export_name(epoch_num)
         try:
-            os.remove(backup_name)
+            os.remove(str(backup_name))
         except OSError:
             logging.warning("Error trying to delete model: %s", backup_name)
 
@@ -373,6 +373,12 @@ class MalGAN(nn.Module):
 
         :return: Results information as a comma separated string
         """
+
+        adversarial_feature_vector_directory = "adversarial_feature_vector_directory"
+
+        if not os.path.exists(adversarial_feature_vector_directory):
+            os.mkdir(adversarial_feature_vector_directory)
+
         # noinspection PyTypeChecker
         valid_loss = self._meas_loader_gen_loss(self._mal_data.valid)
         # noinspection PyTypeChecker
@@ -393,8 +399,6 @@ class MalGAN(nn.Module):
 
             m_diff = m_prime - m
             bits_changed.append(torch.sum(m_diff.cpu(), dim=1))
-
-            pickle.dump(m_diff, open("adversarial_feature_set.pk", 'wb'))
 
             # logging.debug("The shape of m_diff is : " + str(m_diff.shape))
             # logging.debug("The type of m_diff is : " + str(type(m_diff)))

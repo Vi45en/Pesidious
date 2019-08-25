@@ -38,7 +38,7 @@ def _export_results(model: 'MalGAN', valid_loss: TensorOrFloat, test_loss: Tenso
 
     results_file = Path("results_with_epochs.csv")
     exists = results_file.exists()
-    with open(results_file, "a+") as f_out:
+    with open(str(results_file), "a+") as f_out:
         header = ",".join(["time_completed,M,Z,batch_size,Number of Epochs,test_set_size,detector_type,activation",
                            "gen_hidden_dim,discim_hidden_dim",
                            "avg_validation_loss,avg_test_loss,avg_num_bits_changed",

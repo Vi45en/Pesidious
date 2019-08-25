@@ -25,8 +25,8 @@ def parse_args():
     
     parser = argparse.ArgumentParser(description='PE File Feature Extraction. \nThe purpose of this application is extract the feature vectors from PE files for the purpose of malware analysis and malware mutation.')
 
-    parser.add_argument('-m',"--malware-path", help = "The filepath of the malicious PE files whose features are to be extracted.", type = str, default="Data\\malicious_pe")
-    parser.add_argument('-b',"--benign-path", help = "The filepath of the benign PE files whose features are to be extracted.", type = str, default="Data\\benign_pe")
+    parser.add_argument('-m',"--malware-path", help = "The filepath of the malicious PE files whose features are to be extracted.", type = Path, default=Path("Data/malware"))
+    parser.add_argument('-b',"--benign-path", help = "The filepath of the benign PE files whose features are to be extracted.", type = str, default=Path("Data/benign"))
     parser.add_argument('-o', "--output-dir", help = "The filepath to where the feature vectors will be extracted. If this location does not exist, it will be created.", type = str, default = "feature_vector_directory")
     parser.add_argument('-d', "--detailed-log", help="Detailed Logs", type = bool, default=False)
     parser.add_argument('-f', "--logfile", help = "The file path to store the logs.", type = str, default = "extract_features_logs.txt")
@@ -381,7 +381,7 @@ def main():
     logging.debug("\tDetailed Log - " + str(args.detailed_log))
     logging.debug("\tGenerate Features - " + str(args.generate_features))
 
-    features_mapping_index(args.malware_path, args.benign_path, args.output_dir, args.generate_features)
+    features_mapping_index(str(args.malware_path), str(args.benign_path), str(args.output_dir), args.generate_features)
     pass
 
 if __name__ == "__main__":
