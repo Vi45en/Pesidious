@@ -264,11 +264,11 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
                         if section_count > sections_threshold:
                             break
 
-                        logging.debug("section --> " + sec)
 
                         if len(sec) > 6:
                             continue
 
+                        logging.debug("section --> " + sec)
                         new_section = lief.PE.Section(sec)
                         # new_section.content = [0xCC] * 0x1000
 
@@ -277,8 +277,8 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
                         L = random.randrange(100000)
                         new_section.content = [random.randint(0, upper) for _ in range(L)]
 
-                        new_section.virtual_address = max(
-                            [s.virtual_address + s.size for s in binary.sections])
+                        # new_section.virtual_address = max(
+                        #     [s.virtual_address + s.size for s in binary.sections])
                         # add a new empty section
 
                         binary.add_section(new_section,
