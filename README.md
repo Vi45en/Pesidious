@@ -95,9 +95,9 @@ The following steps will guide you through all the installations required to set
 
 ### Training Instructions
 
-1. Feature extraction and feature mapping vector generation
+1. Feature extraction and feature mapping vector generation.
 
-   1. The first step in the training process is generating a feature vector mapping for section names and import functions from a    malware and benign binary samples.  
+   + The first step in the training process is generating a feature vector mapping for section names and import functions from a    malware and benign binary samples.  
 
    ```sh
    python extract_features.py
@@ -111,8 +111,35 @@ The following steps will guide you through all the installations required to set
    Output Directory                                | `command -o` or `command --output-dir`  | The filepath to where the feature vectors will be extracted. If this location does not exist, it will be created. [default = `feature_vector_directory`].
    Detailed Logs                                   | `command -d` or `command --detailed-log`| Display the debug logs on console. [default = `False`].
    Log File                                        | `command -f` or `command --logfile      | The file path to store the logs. [default = `extract_features_logs.txt`.
-   Log Level                                       | `command -l` or `command --log-level    | Set the severity level of logs you want to collect. By default, the logging module logs the messages with a severity level of WARNING or above. Valid choices (Enter the numeric values) are: "[10] - DEBUG, [20] - INFO, [30] - WARNING, [40] - ERROR and [50] - CRITICAL. [default = `logging.INFO`.
+   Log Level                                       | `command -l` or `command --log-level    | Set the severity level of logs you want to collect. By default, the logging module logs the messages with a severity level of WARNING or above. Valid choices (Enter the numeric values) are: "[10] - DEBUG, [20] - INFO, [30] - WARNING, [40] - ERROR and [50] - CRITICAL. [default = `logging.INFO`].
+   
+   + The `extract_features.py` python script outputs the following files in the output directory:
+      + *Features Vector Mapping* - _feature_vector_mapping.pk_, _import_feature_vector_mapping.pk_ and _section_feature_vector_mapping.pk_
+      + *Malware Feature Vectors* - _malware-feature-set.pk_, _malware-pe-files-import-feature-set.pk_ and _malware-pe-files-section-feature-set.pk_
+      + *Benign Feature Vectors* - benign-feature-set.pk_, _benign-pe-files-import-feature-set.pk_ and _benign-pe-files-section-feature-set.pk_
 
+1. Malware feature vector mutation using Generative Adversarial Networks. 
+
+   + Once the feature mapping vector and the feature vectors for both the malware and benign binary samples have been generated, we can feed these feature vectors to a MalGAN model to generate adversarial feature vectors which appear to be benign. 
+   
+   ```sh
+   python main_malgan.py Z BATCH_SIZE NUM_EPOCHS MALWARE_FILE BENIGN_FILE 
+   ```
+   > For more information,[see below.](#acknowledgements)
+   
+       Using a CLI                                     | Command                                 | Notes
+   :---------------------------------------------- | :-------------------------------------- | :----
+   Help                                            | `command -h` or `command --help`        | Display the help message and exit.
+   Z - Noise Vector                                |                                         | Dimension of the latent vector.
+   BATCH_SIZE - Batch Size                         |                                         | Batch size.
+   NUM_EPOCHS - Number of Epochs                   |                                         | Number of training epochs.
+   MALWARE_FILE - Malware Feature Vectors          |                                         | Data file contacting the malware feature vectors.
+   BENIGN_FILE - Benign Feature Vectors            |                                         | Data file contacting the benign feature vectors.
+   GEN_HIDDEN_SIZES - Generator Hidden Layer Size  | `command --gen-hidden-sizes`            | Dimension of the hidden layer(s) in the GENERATOR.Multiple layers should be space separated. [default: [256, 256]].
+   DISCRIM_HIDDEN_SIZES - Discriminator HL size    | `command --discrim-hidden-sizes`        | Dimension of the hidden layer(s) in the DISCRIMINATOR.Multiple layers should be space separated [default: [256, 256]].
+   ACTIVATION - Activation Function                | `command --activation`                  | Activation function for the generator and discriminatior hidden layer(s). Valid choices (case insensitive) are: "ReLU", "ELU", "LeakyReLU", "tanh" and "sigmoid". (default: LeakyReLU).
+   DETECTOR - Detector Algorithm                   | `command --detector`                    | Learner algorithm used in the black box detector. Valid choices (case insensitive) include: "DecisionTree", "LogisticRegression", "MultiLayerPerceptron", "RandomForest", and "SVM". (default: RandomForest).
+   
 
 ### Testing Instructions
 
