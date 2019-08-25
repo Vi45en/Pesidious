@@ -57,7 +57,7 @@ The following steps will guide you through all the installations required to set
    pip install pip==8.1.1
    ```
  
-1. Setting up a virtual environment in Python 3.6. 
+1. Setting up a virtual environment in Python 3.6:
 
    1. Downloading and installing _virtualenv_. 
    
@@ -71,8 +71,6 @@ The following steps will guide you through all the installations required to set
        virtualenv -p path\to\your\python.exe test_env
        ```    
        >Note: In Windows, your Python3.6 environment is most likely to be in the following directory: `C:\Python36\Python.exe`.
-       
-       > For 
    
    1. Activate the test environment.     
    
@@ -100,7 +98,7 @@ The following steps will guide you through all the installations required to set
 
 1. Install all the required libraries, by installing the requirements.txt file.
 
-   > :information_source: This has been tested on Linux and not Windows. Use Caution! 
+   > :heavy_exclamation_mark: This has been tested on Linux and not Windows. Use Caution! 
 
     ```sh
     pip install -r requirements_rl.txt
