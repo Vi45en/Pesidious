@@ -89,11 +89,13 @@ The following steps will guide you through all the installations required to set
     
     > Install lief for Python 3.7 using the following command.
       `pip install https://github.com/lief-project/packages/raw/lief-master-latest/pylief-0.9.0.dev.zip`
-    
-
+ 
+ 
 ## Running Instructions
 
 ### Training Instructions
+
+> :warning: WARNING: This segment is currently incomplete due to limited time. The code however is functional. WE apologize for any inconvinience caused. Please proceed to the next section. [click here](#testing-instructions)
 
 > Note: If you wish to skip the training and jump directly to testing our trained model [click here](#testing-instructions)
 
@@ -142,12 +144,31 @@ The following steps will guide you through all the installations required to set
    
    + The `binary_builder.py` python script outputs the `adversarial_imports_set.pk` or the `adversarial_section_set.pk`, based on the feature mapping you select, in the `adversarial_feature_vector_directory` directory. 
    
-1. To access the samples that includes unpacked backdoors from VirusTotal, login to the google account ()
 
 ### Testing Instructions
 
+The output from GAN has already been stored as (gym_malware/envs/controls/adverarial_imports_set.pk and gym_malware/envs/controls/adverarial_sections_set.pk) and is being used for the training. 
+
 The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 100 (50%) of mutated samples, the training stops and saves the model as dqeaf.pt which is used by the testing script.
 
+## Environment 
+
+1. Make sure that you have pip 8.1.1 and python3.6 installed for the program to run. 
+
+2. Create a virtual envrionment as given [here](https://docs.python.org/3/tutorial/venv.html). 
+
+3. Install the requirements using the following command : 
+
+```
+pip install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+Collecting torch==1.2.0+cpu
+```
+
+```
+pip install -r requirements_rl.txt
+```
+
+## Execution
 1. Create a new directory 'testing-samples' and copy your test samples in it. 
 
 2. python dqeaf-test.py testing-samples
@@ -158,26 +179,31 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 ## Training and Testing Data
 
+If you have a VirusTotal API key, you may download samples to the `gym_malware/gym_malware/envs/utils/samples/` using the Python script `download_samples.py`.
+
 ## Testing Procedures and Results
 
 ## To Do
 
+- [x] Substitute Blackbox detector with Virus total as the training detector. 
+- [ ] Combine scripts for reinforcement learning and malware generative adversarial network into one script for ease of use. 
+- [ ] Identify more accurate import functions for malwares, to retain functionality.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [PyTorch](https://pytorch.org/) -  Open source machine learning library based on the Torch library.
+* [Lief](https://github.com/lief-project/LIEF) - A cross platform library which can parse, modify and abstract ELF, PE and MachO formats.
+* [Gym-Malware](https://github.com/endgameinc/gym-malware/) - Malware manipulation environment for OpenAI's gym.
+* [MalwareGAN](https://github.com/ZaydH/MalwareGAN) - Adversarial Malware Generation Using GANs.
 
 
 ## Authors
 
-* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
-* **Bedang Sen** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Bednag Sen](http://github.com/bedangSen/)
-* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
-* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Github](https://github.com/Chandni97)
+* **Bedang Sen** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Github](http://github.com/bedangSen/)
+* **Prasant Adhikari** - *Research Student, New York Unviersity Abu Dhabi* - [Github](https://github.com/prasantadh)
+* **Muhammad Osama Khan** - *Research Student, New York Unviersity Abu Dhabi* - [Github](https://github.com/mok232)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Acknowledgments
 
