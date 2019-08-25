@@ -233,7 +233,6 @@ The output from GAN has already been stored as (`gym_malware/envs/controls/adver
 
 The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 100 (50%) of mutated samples, the training stops and saves the model as dqeaf.pt which is used by the testing script.
 
-#### Environment 
 
 #### Execution
 
