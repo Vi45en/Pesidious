@@ -149,8 +149,6 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
     elif feature_type.lower() == "imports":
 
         imports_state = True
-        adversarial_vector = Path("adversarial_feature_vector_directory\imports_adversarial_feature_array_set.pk")
-        feature_mapping = Path("feature_vector_directory\import_feature_vector_mapping.pk")
 
         output_path = os.path.join(output_path, "Imports")
         if not os.path.exists(str(output_path)):
