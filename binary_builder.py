@@ -116,6 +116,9 @@ def binary_builder(malware_pe: str, adversarial_vector: str, feature_mapping: st
 
     RL_features = "RL_Features"
 
+    logging.debug("Feature Mapping : " + str(feature_mapping))
+
+
     if not os.path.exists(str(output_path)):
         logging.info("Constructing output directory ...")
         os.makedirs(str(output_path))
@@ -555,7 +558,7 @@ def main():
     elif str(args.feature_vector).lower() == "imports":
         adversarial_vector = Path("adversarial_feature_vector_directory/imports_adversarial_feature_array_set.pk")
         feature_mapping = Path("feature_vector_directory/import_feature_vector_mapping.pk")
-        logging.debug("Feature Mapping : " + str(feature_mapping))
+        # logging.debug("Feature Mapping : " + str(feature_mapping))
     else:
         adversarial_vector = str(args.adversarial_vector) 
         feature_mapping = str(args.feature_mapping)
