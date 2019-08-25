@@ -160,6 +160,11 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 3. Install the requirements using the following command : 
 
 ```
+pip install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+Collecting torch==1.2.0+cpu
+```
+
+```
 pip install -r requirements_rl.txt
 ```
 
