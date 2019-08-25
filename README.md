@@ -160,7 +160,7 @@ The following steps will guide you through all the installations required to set
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Bedang Sen** - *Developer Advocate, IBM & Student, University of Wollongong in Dubai* - [PurpleBooth](https://github.com/PurpleBooth)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
