@@ -89,12 +89,11 @@ The following steps will guide you through all the installations required to set
     
     > Install lief for Python 3.7 using the following command.
       `pip install https://github.com/lief-project/packages/raw/lief-master-latest/pylief-0.9.0.dev.zip`
+    
 
 ## Running Instructions
 
 ### Training Instructions
-
-> Note: If you wish to directly jump to the testing phase with already generated models, please proced to the [next section](#testing-instructions).
 
 1. Feature extraction and feature mapping vector generation.
 
@@ -141,7 +140,7 @@ The following steps will guide you through all the installations required to set
    
    + The `binary_builder.py` python script outputs the `adversarial_imports_set.pk` or the `adversarial_section_set.pk`, based on the feature mapping you select, in the `adversarial_feature_vector_directory` directory. 
    
-   
+1. To access the  
 ### Testing Instructions
 
 The training tests the learning agent after every 550 episodes with 200 samples. If the agent is able to generate 100 (50%) of mutated samples, the training stops and saves the model as dqeaf.pt which is used by the testing script.
@@ -170,9 +169,6 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 ## Authors
 
-* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
-* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
-* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
 * **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
