@@ -95,7 +95,7 @@ The following steps will guide you through all the installations required to set
 
 ### Training Instructions
 
-> :warning: WARNING: This segment is currently under some modification. Please proceed to the next section. 
+> :warning: WARNING: This segment is currently incomplete due to limited time. The code however is functional. WE apologize for any inconvinience caused. Please proceed to the next section. [click here](#testing-instructions)
 
 > Note: If you wish to skip the training and jump directly to testing our trained model [click here](#testing-instructions)
 
