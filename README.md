@@ -1,4 +1,4 @@
-# T<bold>AI<bold>CHI - Malware Mutation using Deep Reinforcement Learning and GANs 
+# Malware Mutation using Deep Reinforcement Learning and GANs 
 
 
 Solution Objective
