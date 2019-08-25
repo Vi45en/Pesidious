@@ -21,6 +21,7 @@ from statistics import mean
 env_id = "malware-score-v0"
 env = gym.make(env_id)
 env.seed(123)
+print(env.action_space.n)
 
 from collections import deque
 np.random.seed(123)
@@ -206,7 +207,7 @@ def test_model():
 	total_reward = 0
 	F = 200 #total test files
 	T = 80 # total mutations allowed
-	ratio = F * 0.6
+	ratio = F * 0.5 # if number of mutations generated is half the total size
 	success = 0
 	rn = RangeNormalize(-0.5,0.5)
 	fe = pefeatures.PEFeatureExtractor()
@@ -280,7 +281,7 @@ if __name__ == "__main__":
 
 			replay_buffer.push(state_norm, action, reward, next_state_norm, done)
 
-			if len(replay_buffer) > batch_size:
+			if len(replay_buffer) > B:
 				loss = compute_td_loss(batch_size)
 				losses.append(loss.item())
 				print('loss avg : ' + str(mean(losses)))
@@ -300,9 +301,8 @@ if __name__ == "__main__":
 			print('updating target')
 			update_target(current_model, target_model)
 
-		if episode % 1000 == 0:
+		if episode % 550 == 0:
 			print('testing model')
-			torch.save(current_model.state_dict(), 'dqeaf.pt')
 			check = test_model()
 				
 		if check:
