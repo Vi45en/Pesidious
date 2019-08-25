@@ -95,6 +95,8 @@ The following steps will guide you through all the installations required to set
 
 ### Training Instructions
 
+> Note: If you wish to skip the training and jump directly to testing our trained model [click here](#testing-instructions)
+
 1. Feature extraction and feature mapping vector generation.
 
    + The first step in the training process is generating a feature vector mapping for section names and import functions from a    malware and benign binary samples.  
@@ -170,6 +172,9 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 ## Authors
 
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
+* **Bedang Sen** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Bednag Sen](http://github.com/bedangSen/)
+* **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
 * **Chandni Vaya** - *Developer Advcocate, IBM & Student, University of Wollongong in Dubai* - [Chandni Vaya](https://github.com/Chandni97)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
