@@ -167,9 +167,10 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [PyTorch](https://pytorch.org/) -  Open source machine learning library based on the Torch library.
+* [Lief](https://github.com/lief-project/LIEF) - A cross platform library which can parse, modify and abstract ELF, PE and MachO formats.
+* [Gym-Malware](https://github.com/endgameinc/gym-malware/) - Malware manipulation environment for OpenAI's gym.
+* [MalwareGAN](https://github.com/ZaydH/MalwareGAN) - Adversarial Malware Generation Using GANs.
 
 
 ## Authors
