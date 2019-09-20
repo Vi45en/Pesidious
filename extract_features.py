@@ -366,7 +366,7 @@ def main():
 
     print(args)
 
-    logging_setup(str(args.detailed_log), str(args.logfile), str(args.log_level))
+    logging_setup(args.detailed_log, str(args.logfile), args.log_level)
 
     if args.generate_features:
         args.benign_path = args.malware_path
