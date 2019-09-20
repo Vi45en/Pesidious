@@ -354,9 +354,9 @@ def extract_sections(file, feature_vector_mapping: dict, index: int = 0):
     except:
         traceback.print_exc()
 
-        # logging.exception("Deleting PE file : " + file)
-        # os.remove(file)
-        # logging.exception(file, " has been deleted ...")
+        logging.exception("Deleting PE file : " + file)
+        os.remove(file)
+        logging.exception(file, " has been deleted ...")
 
     return feature_vector_mapping, index
 
