@@ -384,7 +384,7 @@ def main():
     malware_path = str(args.malware_path)
     benign_path = str(args.benign_path)
     output_dir = str(args.output_dir)
-    generate_features = str(args.generate_features)
+    generate_features = args.generate_features
 
     features_mapping_index(malware_path, benign_path, output_dir, generate_features)
     pass
