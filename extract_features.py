@@ -381,8 +381,12 @@ def main():
     logging.debug("\tDetailed Log - " + str(args.detailed_log))
     logging.debug("\tGenerate Features - " + str(args.generate_features))
 
-    logging.debug((args.malware_path))
-    features_mapping_index(str(args.malware_path), str(args.benign_path), str(args.output_dir), args.generate_features)
+    malware_path = str(args.malware_path)
+    benign_path = str(args.benign_path)
+    output_dir = str(args.output_dir)
+    generate_features = str(args.generate_features)
+
+    features_mapping_index(malware_path, benign_path, output_dir, generate_features)
     pass
 
 if __name__ == "__main__":
