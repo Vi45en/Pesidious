@@ -14,6 +14,7 @@ Find our full documentation [here](https://docs.google.com/document/d/1WDYrzpCX6
 + [Training and Testing Data](#training-and-testing-data)
 + [Running Instructions](#running-instructions)
 + [Testing Procedures and results](#testing-procedures-and-results)
++ [Known Issues and Fixes](#known-issues-and-fixes)
 + [Future Additions](#to-do)
 + [Built With](#built-with)
 + [Authors](#authors)
@@ -275,11 +276,22 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 </p>
 
 
+## Known Issues and Fixes
+
+> :warning: WARNING: This segment is currently under construction. We apologize for any inconvinience caused. Please proceed to the next section. [click here](#to-do)
+
+1. Test infomration here.
+   + Solution here.
+   ```
+   Something here.
+   ```
+
 ## To Do
 
 - [x] Substitute Blackbox detector with Virus total as the training detector. 
 - [ ] Combine scripts for reinforcement learning and malware generative adversarial network into one script for ease of use. 
 - [ ] Identify more accurate import functions for malwares, to retain functionality.
+- [ ] Improve the functionality of the mutated malware.
 
 ## Built With
 
