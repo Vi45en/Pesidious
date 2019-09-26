@@ -281,7 +281,7 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 > :warning: WARNING: This segment is currently under construction. We apologize for any inconvinience caused. Please proceed to the next section. [click here](#to-do)
 
 1. `pip install -r requirements.txt` gives you an error. 
-   + Solution:
+   Solution:
    ```
    pip install tqdm
    pip install sklearn
@@ -289,13 +289,13 @@ The training tests the learning agent after every 550 episodes with 200 samples.
    ```
    
 1. **ModuleNotFoundError: No module named 'tensorboardX'** error while running `python main_malgan.py` script
-   + Solution:
+   Solution:
    ```
    pip install tensorboardX
    ```
    
 1. **AttributeError: 'torch._C.Value' object has no attribute 'uniqueName'** error while running `python main_malgan.py` script
-   + Solution:
+   Solution:
    > This error takes place because the torch version is 1.2.0. So let's downgrade to 1.1.0
    ```
    pip install torch==1.1.0
