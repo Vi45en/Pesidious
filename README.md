@@ -198,7 +198,7 @@ Download the backdoor malware binary testing dataset [here](https://uowmailedu-m
    + Once the feature mapping vector and the feature vectors for both the malware and benign binary samples have been generated, we can feed these feature vectors to a MalGAN model to generate adversarial feature vectors which appear to be benign. 
    
       ```sh
-      python main_malgan.py Z BATCH_SIZE NUM_EPOCHS MALWARE_FILE BENIGN_FILE 
+      python main_malgan.py SIZE_OF_NOISE BATCH_SIZE NUM_EPOCHS MALWARE_FEATURES BENIGN_FEATURES 
       ```
       > For more information,[see below.](#acknowledgements)
    
