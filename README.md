@@ -280,10 +280,13 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 > :warning: WARNING: This segment is currently under construction. We apologize for any inconvinience caused. Please proceed to the next section. [click here](#to-do)
 
-1. Test infomration here.
-   + Solution here.
+1. `pip install -r requirements.txt` gives you an error. 
+   + Solution"
    ```
-   Something here.
+   pip install tqdm
+   pip install sklearn
+   pip install lief
+
    ```
 
 ## To Do
@@ -297,6 +300,7 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 * [PyTorch](https://pytorch.org/) -  Open source machine learning library based on the Torch library.
 * [Lief](https://github.com/lief-project/LIEF) - A cross platform library which can parse, modify and abstract ELF, PE and MachO formats.
+* [PE Bliss](https://github.com/BackupGGCode/portable-executable-library) - PE libarry for rebuilding PE files, written in C++.
 * [Gym-Malware](https://github.com/endgameinc/gym-malware/) - Malware manipulation environment for OpenAI's gym.
 * [MalwareGAN](https://github.com/ZaydH/MalwareGAN) - Adversarial Malware Generation Using GANs.
 
