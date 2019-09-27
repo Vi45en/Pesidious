@@ -206,11 +206,8 @@ Download the backdoor malware binary testing dataset [here](https://uowmailedu-m
       ```
       > For more information,[see below.](#acknowledgements)
    
-   + Pass either one of the three feature vectors to the `MALWARE_FILE` and `BENIGN_FILE` arguments to generate a feature vector of the respective input.  
-   
-      >  For example: If you pass `benign-pe-files-import-feature-set.pk` and `malware-pe-files-import-feature-set.pk` as arguments, you will generate an adversarial feature vector `adversarial_feature_array_set.pk` that only contains the imports and not the sections or both.
-   
-      > CAUTION: Pass feature vectors of the same type as arguments for non-erratic results. 
+   + You can train the MalGAN on either section features, import features or both by using the `--feature-type` flag. 
+   > For example, to train the MalGAN for just sections using `--feature-type section`.
      
    + The `main_malgan.py` python script outputs the `adversarial_feature_array_set.pk` in the `adversarial_feature_vector_directory` directory.
    
