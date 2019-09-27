@@ -207,7 +207,7 @@ Download the backdoor malware binary testing dataset [here](https://uowmailedu-m
       > For more information,[see below.](#acknowledgements)
    
    + You can train the MalGAN on either section features, import features or both by using the `--feature-type` flag. 
-   > For example, to train the MalGAN for just sections using `--feature-type section`.
+      > For example, to train the MalGAN for just sections using `--feature-type section`.
      
    + The `main_malgan.py` python script outputs the `adversarial_feature_array_set.pk` in the `adversarial_feature_vector_directory` directory.
    
