@@ -35,6 +35,8 @@ The proposed solution successfully generates a mutated malware sample by using r
 
 ## Installation Instructions
 
+> :warning: This has been tested on Linux devices only. Windows users may run into minor setup issues. Take care. 
+
 The following steps will guide you through all the installations required to set up the environment.
 
 1. Install and set up Python 3.6. [Installation Instructions](https://realpython.com/installing-python/)
