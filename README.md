@@ -35,7 +35,7 @@ The proposed solution successfully generates a mutated malware sample by using r
 
 ## Installation Instructions
 
-> :warning: This has been tested on Linux devices only. Windows users may run into minor setup issues. Take care. 
+> :warning: This has been tested on Linux devices only. Windows users may run into minor setup issues. Use Caution. 
 
 The following steps will guide you through all the installations required to set up the environment.
 
@@ -100,8 +100,6 @@ The following steps will guide you through all the installations required to set
    > If you face any issues, refer to the official PyTorch link in order to download the torch library appropriate for you [here](https://pytorch.org/get-started/locally/).
 
 1. Install all the required libraries, by installing the requirements.txt file.
-
-   > :heavy_exclamation_mark: This has been tested on Linux and not Windows. Use Caution! 
 
     ```sh
     pip install -r requirements_rl.txt
