@@ -295,21 +295,21 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 
 1. `pip install -r requirements.txt` gives you an error.
 
-      Solution:
-      
-         ```
-         pip install tqdm
-         pip install sklearn
-         pip install lief
-         ```
+   Solution:
+    
+      ```
+      pip install tqdm
+      pip install sklearn
+      pip install lief
+      ```
    
 1. **ModuleNotFoundError: No module named 'tensorboardX'** error while running `python main_malgan.py` script.
       
-      Solution:
+   Solution:
       
-         ```
-         pip install tensorboardX
-         ```
+      ```
+      pip install tensorboardX
+      ```
    
 1. **IndexError: list index out of range**
 
