@@ -307,21 +307,17 @@ The training tests the learning agent after every 550 episodes with 200 samples.
          pip install tensorboardX
          ```
    
-1. **AttributeError: 'torch._C.Value' object has no attribute 'uniqueName'** error while running `python main_malgan.py` script
+1. **IndexError: list index out of range**
+
+   Solution:
+   This issue arises because you might have some unclean data in your dataset. The `extract_features` python scripts takes care of the data cleaning process by removing the files that would lead to biased or inaccurate results. In order to fix this issue, run the script again using the now-cleaned dataset. 
+   
+      ```
+      python extract_features.py
+      ```
+   > This data cleansing process is case-to-case. For our application, we have restricted our research to Windows 32 bit applications, and hence we are cleaning our datasets based on that. 
       
-      Solution:
-      > This error takes place because the torch version is 1.2.0. So let's downgrade to 1.1.0
-     
-        ```
-         pip install torch==1.1.0
-        ```
-              
- 1. **ModuleNotFoundError: No module named 'tqdm'**
- 
-    Solution:
-       ```
-       pip install tqdm
-       ```
+
 
 ## To Do
 
