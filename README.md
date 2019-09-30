@@ -10,9 +10,9 @@ Find our full documentation [here](https://docs.google.com/document/d/1WDYrzpCX6
 
 
 + [Overview](#overview)
-+ [Installation Instructions](#installing-instructions)
++ [Installation Instructions](#installation-instructions)
 + [Training and Testing Data](#training-and-testing-data)
-+ [Running Instructions](#running-instructions)
++ [Running Instructions](#running-instructions) 
 + [Testing Procedures and results](#testing-procedures-and-results)
 + [Known Issues and Fixes](#known-issues-and-fixes)
 + [Future Additions](#to-do)
@@ -98,7 +98,8 @@ The following steps will guide you through all the installations required to set
    pip install torch==1.1.0
    ```   
    > If you face any issues, refer to the official PyTorch link in order to download the torch library appropriate for you [here](https://pytorch.org/get-started/locally/).
-   > :catuion: Caution: torch 1.2.0 is not yet compatible with lief. So be sure to use a version below that. 
+   
+   > :warning: Caution: torch 1.2.0 is not yet compatible with lief. So be sure to use a version below that. 
 
 1. Install all the required libraries, by installing the requirements.txt file.
 
