@@ -95,9 +95,10 @@ The following steps will guide you through all the installations required to set
 1. Install PyTorch.
 
    ```
-   pip install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+   pip install torch==1.1.0
    ```   
    > If you face any issues, refer to the official PyTorch link in order to download the torch library appropriate for you [here](https://pytorch.org/get-started/locally/).
+   > :catuion: Caution: torch 1.2.0 is not yet compatible with lief. So be sure to use a version below that. 
 
 1. Install all the required libraries, by installing the requirements.txt file.
 
