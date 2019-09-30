@@ -315,6 +315,13 @@ The training tests the learning agent after every 550 episodes with 200 samples.
         ```
          pip install torch==1.1.0
         ```
+        
+ 1. **Could not find a version that satisfies the requirement torch==1.2.0+cu92**
+ 
+    Solution:
+       ```
+       test here. 
+       ```
 
 ## To Do
 
