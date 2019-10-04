@@ -104,7 +104,7 @@ The following steps will guide you through all the installations required to set
 1. Install all the required libraries, by installing the requirements.txt file.
 
     ```sh
-    pip install -r requirements_rl.txt
+    pip install -r requirements.txt
     ```
      
  
