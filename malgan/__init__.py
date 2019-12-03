@@ -152,6 +152,7 @@ class MalGAN(nn.Module):
         self._is_cuda = torch.cuda.is_available()
 
         logging.info("Constructing new MalGAN")
+        
         logging.info("Malware Dimension (M): %d", self.M)
         logging.info("Latent Dimension (Z): %d", self.Z)
         logging.info("Test Split Ratio: %.3f", test_split)
@@ -364,7 +365,7 @@ class MalGAN(nn.Module):
         d = torch.where(y_hat == MalGAN.Label.Malware.value, d_theta, 1 - d_theta)
         return -d.log().mean()
 
-    def measure_and_export_results(self, cyc_len: int) -> str:
+    def measure_and_export_results(self, cyc_len: int, adversarial_feature_vector_directory: str, output_filename: str) -> str:
         r"""
         Measure the test accuracy and provide results information
 
@@ -373,8 +374,6 @@ class MalGAN(nn.Module):
 
         :return: Results information as a comma separated string
         """
-
-        adversarial_feature_vector_directory = "adversarial_feature_vector_directory"
 
         if not os.path.exists(adversarial_feature_vector_directory):
             os.mkdir(adversarial_feature_vector_directory)
@@ -407,7 +406,8 @@ class MalGAN(nn.Module):
             msg = "Malware signature changed to 0 which is not allowed"
             assert torch.sum(m_diff < -0.1) == 0, msg
         avg_changed_bits = torch.cat(bits_changed).mean()
-        pickle.dump(m_prime_arr, open(os.path.join(adversarial_feature_vector_directory, "adversarial_feature_array_set.pk"), 'wb'))
+        
+        pickle.dump(m_prime_arr, open(os.path.join(adversarial_feature_vector_directory, output_filename), 'wb'))
         logging.debug("Avg. Malware Bits Changed Changed: %2f", avg_changed_bits)
 
         # BB prediction of the malware before the generator

@@ -38,7 +38,7 @@ USE_CUDA = False
 Variable = lambda *args, **kwargs: autograd.Variable(*args, **kwargs).cuda() if USE_CUDA else autograd.Variable(*args, **kwargs)
 
 model = dqeaf.DQN().to(device)
-model.load_state_dict(torch.load('dqeaf.pt'))
+model.load_state_dict(torch.load('saved_models/dqeaf1100.pt'))
 model.eval()
 
 input_folder = sys.argv[1]

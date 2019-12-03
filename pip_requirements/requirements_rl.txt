@@ -28,8 +28,11 @@ scikit-learn==0.18.2
 scipy==0.19.1
 simplegeneric==0.8.1
 six==1.12.0
-torch==1.2.0+cpu
-torchvision==0.4.0+cpu
+tensorflow==1.2.1
+theano==0.9.0
+chainer==2.0.1
+chainerrl==0.2.0
+pefile
 traitlets==4.3.2
 urllib3==1.25.3
 wcwidth==0.1.7

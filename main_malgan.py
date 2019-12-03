@@ -15,6 +15,8 @@ import sys
 import logging
 from typing import Union
 from pathlib import Path
+from datetime import date
+import os
 
 import numpy as np
 
@@ -24,7 +26,7 @@ from torch import nn
 from malgan import MalGAN, MalwareDataset, BlackBoxDetector
 
 
-def setup_logger(quiet_mode: bool, filename: str = "tester.log", log_level: int = logging.DEBUG):
+def setup_logger(quiet_mode: bool, filename: str = "MalGAN_" + str(date.today()) + ".log", log_level: int = logging.DEBUG):
     r"""
     Logger Configurator
 
@@ -34,6 +36,12 @@ def setup_logger(quiet_mode: bool, filename: str = "tester.log", log_level: int 
     :param filename: Log file name
     :param log_level: Level to log
     """
+    log_dir = "Logs"
+    if not os.path.exists(log_dir):
+        os.mkdir(log_dir)
+
+    filename = os.path.join(log_dir, filename)
+
     date_format = '%m/%d/%Y %I:%M:%S %p'  # Example Time Format - 12/12/2010 11:46:36 AM
     format_str = '%(asctime)s -- %(levelname)s -- %(message)s'
     logging.basicConfig(filename=filename, level=log_level, format=format_str, datefmt=date_format)
@@ -61,14 +69,16 @@ def parse_args() -> argparse.Namespace:
     """
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument("Z", help="Dimension of the latent vector", type=int, default=10)
-    parser.add_argument("batch_size", help="Batch size", type=int, default=32)
-    parser.add_argument("num_epoch", help="Number of training epochs", type=int, default=100)
+    parser.add_argument("-z", "--noise-vector", help="Dimension of the latent vector", type=int, default=10)
+    parser.add_argument("-s", "--batch-size", help="Batch size", type=int, default=32)
+    parser.add_argument("-n", "--num-epoch", help="Number of training epochs", type=int, default=100)
 
-    msg = "Data file contacting the %s feature vectors"
-    for x in ["malware", "benign"]:
-        parser.add_argument(x[:3] + "_file", help=msg % x, type=Path, default="data/%s.npy" % x)
+    parser.add_argument("-f", "--feature-type", help="Select the type of features you will be training your malGAN on. Valid choices (case insensitive) are: \"Section\", \"Imports\" or \"both\"", type=str, default="both")
 
+    parser.add_argument("-m", "--malware-features", help="Select the path to your malware feature vector", type=Path, default=("feature_vector_directory/malware/malware_feature_set.pk"))
+    parser.add_argument("-b", "--benign-features", help="Select the path to your benign feature vector", type=Path, default=("feature_vector_directory/benign/benign_feature_set.pk"))
+    parser.add_argument("-o", "--output-directory", help="Select the path to save your adversarial feature vector", type=Path, default=("adversarial_feature_vector_directory"))
+    
     parser.add_argument("-q", help="Quiet mode", action='store_true', default=False)
 
     help_msg = " ".join(["Dimension of the hidden layer(s) in the GENERATOR."
@@ -160,6 +170,8 @@ def main():
     args = parse_args()
     setup_logger(args.q)
 
+    # print(args)
+
     MalGAN.MALWARE_BATCH_SIZE = args.batch_size
 
     if torch.cuda.is_available():
@@ -167,17 +179,44 @@ def main():
     else:
         logging.info("No GPU detected. Running CPU only.")
 
-    malgan = MalGAN(load_dataset(args.mal_file, MalGAN.Label.Malware.value),
-                    load_dataset(args.ben_file, MalGAN.Label.Benign.value),
-                    Z=args.Z,
+    if str(args.feature_type).lower() == "section":
+        malware_features = Path("feature_vector_directory/malware/malware_pe_files_section_feature_set.pk")
+        benign_features = Path("feature_vector_directory/benign/benign_pe_files_section_feature_set.pk")
+        output_filename = "adversarial_section_set.pk"
+        pass
+
+    elif str(args.feature_type).lower() == "imports":
+        malware_features = Path("feature_vector_directory/malware/malware_pe_files_import_feature_set.pk")
+        benign_features = Path("feature_vector_directory/benign/benign_pe_files_import_feature_set.pk")
+        output_filename = "adversarial_imports_set.pk"
+        pass
+
+    else:
+        malware_features = Path("feature_vector_directory/malware/malware_feature_set.pk")
+        benign_features = Path("feature_vector_directory/benign/benign_feature_set.pk")
+        output_filename = "adversarial_feature_set.pk"
+        pass
+
+    logging.info("Feature Type: %s", str(args.feature_type))
+    logging.info("Malware directory: %s", str(malware_features))
+    logging.info("Benign directory: %s", str(benign_features))
+    logging.info("Output: " + str(os.path.join(args.output_directory, output_filename)))
+
+    malgan = MalGAN(load_dataset(str(malware_features), MalGAN.Label.Malware.value),
+                    load_dataset(str(benign_features), MalGAN.Label.Benign.value),
+                    Z=args.noise_vector,
                     h_gen=args.gen_hidden_sizes,
                     h_discrim=args.discrim_hidden_sizes,
                     g_hidden=args.activation,
                     detector_type=args.detector)
     malgan.fit_one_cycle(args.num_epoch, quiet_mode=args.q)
-    results = malgan.measure_and_export_results(args.num_epoch)
+    results = malgan.measure_and_export_results(args.num_epoch, str(args.output_directory), output_filename)
+
+
     if args.print_results:
         print(results)
+
+
 
 
 if __name__ == "__main__":

@@ -28,9 +28,6 @@ np.random.seed(123)
 
 ACTION_LOOKUP = {i: act for i, act in enumerate(manipulate.ACTION_TABLE.keys())}
 
-# calculate epsilon
-
-
 device = torch.device("cpu")
 
 USE_CUDA = False
@@ -271,13 +268,16 @@ if __name__ == "__main__":
 			print('mutation : ' + str(mutation))
 			print('action : ' + str(action))
 			next_state, reward, done, _ = env.step(action)
-			print('reward : ' + str(reward))
+			
 			next_state_norm = rn(next_state) 
 			next_state_norm = torch.from_numpy(next_state_norm).float().unsqueeze(0).to(device)
 
 			if reward == 10.0:
+				print("rewarding action : " + str(action))
 				power = -((mutation-1)/T)
 				reward = (math.pow(reward_ben, power))*100
+
+			print('reward : ' + str(reward))
 
 			replay_buffer.push(state_norm, action, reward, next_state_norm, done)
 
@@ -293,9 +293,7 @@ if __name__ == "__main__":
 			state_norm = next_state_norm
 			#print(state_norm[0:7])
 
-		print("episode is over : ")
-		print(episode)
-		print(reward)
+		print("episode is over : " + str(episode) + " reward : " + str(reward))
 
 		if n % 100 == 0:
 			print('updating target')
@@ -303,6 +301,7 @@ if __name__ == "__main__":
 
 		if episode % 550 == 0:
 			print('testing model')
+			torch.save(current_model.state_dict(), 'dqeaf' + str(episode) + '.pt')
 			check = test_model()
 				
 		if check:

@@ -1,0 +1,105 @@
+09/24/2019 03:05:16 PM -- INFO -- 
+
+******************* New Run Beginning *****************
+09/24/2019 03:05:16 PM -- INFO -- No GPU detected. Running CPU only.
+09/24/2019 03:05:17 PM -- DEBUG -- self.x.shape[1] : 9568
+09/24/2019 03:05:17 PM -- DEBUG -- self.x.shape[1] : 9568
+09/24/2019 03:05:17 PM -- DEBUG -- self.x.shape[1] : 9568
+09/24/2019 03:05:17 PM -- INFO -- Constructing new MalGAN
+09/24/2019 03:05:17 PM -- INFO -- Malware Dimension (M): 9568
+09/24/2019 03:05:17 PM -- INFO -- Latent Dimension (Z): 20
+09/24/2019 03:05:17 PM -- INFO -- Test Split Ratio: 0.200
+09/24/2019 03:05:17 PM -- INFO -- Generator Hidden Layer Sizes: [256, 256]
+09/24/2019 03:05:17 PM -- INFO -- Discriminator Hidden Layer Sizes: [256, 256]
+09/24/2019 03:05:17 PM -- INFO -- Blackbox Detector Type: RandomForest
+09/24/2019 03:05:17 PM -- INFO -- Activation Type: LeakyReLU
+09/24/2019 03:05:17 PM -- INFO -- CUDA State: Disabled
+09/24/2019 03:05:17 PM -- DEBUG -- Starting training of blackbox detector of type "RandomForest"
+09/24/2019 03:05:42 PM -- DEBUG -- COMPLETED training of blackbox detector of type "RandomForest"
+09/24/2019 03:17:55 PM -- INFO -- 
+
+******************* New Run Beginning *****************
+09/24/2019 03:17:55 PM -- INFO -- No GPU detected. Running CPU only.
+09/24/2019 03:17:55 PM -- DEBUG -- self.x.shape[1] : 145
+09/24/2019 03:17:55 PM -- DEBUG -- self.x.shape[1] : 145
+09/24/2019 03:17:55 PM -- DEBUG -- self.x.shape[1] : 145
+09/24/2019 03:17:55 PM -- INFO -- Constructing new MalGAN
+09/24/2019 03:17:55 PM -- INFO -- Malware Dimension (M): 145
+09/24/2019 03:17:55 PM -- INFO -- Latent Dimension (Z): 20
+09/24/2019 03:17:55 PM -- INFO -- Test Split Ratio: 0.200
+09/24/2019 03:17:55 PM -- INFO -- Generator Hidden Layer Sizes: [256, 256]
+09/24/2019 03:17:55 PM -- INFO -- Discriminator Hidden Layer Sizes: [256, 256]
+09/24/2019 03:17:55 PM -- INFO -- Blackbox Detector Type: RandomForest
+09/24/2019 03:17:55 PM -- INFO -- Activation Type: LeakyReLU
+09/24/2019 03:17:55 PM -- INFO -- CUDA State: Disabled
+09/24/2019 03:17:55 PM -- DEBUG -- Starting training of blackbox detector of type "RandomForest"
+09/24/2019 03:17:56 PM -- DEBUG -- COMPLETED training of blackbox detector of type "RandomForest"
+09/24/2019 04:36:27 PM -- INFO -- 
+
+******************* New Run Beginning *****************
+09/24/2019 04:36:27 PM -- INFO -- No GPU detected. Running CPU only.
+09/24/2019 04:36:27 PM -- DEBUG -- self.x.shape[1] : 145
+09/24/2019 04:36:27 PM -- DEBUG -- self.x.shape[1] : 145
+09/24/2019 04:36:27 PM -- DEBUG -- self.x.shape[1] : 145
+09/24/2019 04:36:27 PM -- INFO -- Constructing new MalGAN
+09/24/2019 04:36:27 PM -- INFO -- Malware Dimension (M): 145
+09/24/2019 04:36:27 PM -- INFO -- Latent Dimension (Z): 20
+09/24/2019 04:36:27 PM -- INFO -- Test Split Ratio: 0.200
+09/24/2019 04:36:27 PM -- INFO -- Generator Hidden Layer Sizes: [256, 256]
+09/24/2019 04:36:27 PM -- INFO -- Discriminator Hidden Layer Sizes: [256, 256]
+09/24/2019 04:36:27 PM -- INFO -- Blackbox Detector Type: RandomForest
+09/24/2019 04:36:27 PM -- INFO -- Activation Type: LeakyReLU
+09/24/2019 04:36:27 PM -- INFO -- CUDA State: Disabled
+09/24/2019 04:36:27 PM -- DEBUG -- Starting training of blackbox detector of type "RandomForest"
+09/24/2019 04:36:27 PM -- DEBUG -- COMPLETED training of blackbox detector of type "RandomForest"
+09/27/2019 04:21:59 PM -- INFO -- 
+
+******************* New Run Beginning *****************
+09/27/2019 04:21:59 PM -- INFO -- No GPU detected. Running CPU only.
+09/27/2019 04:21:59 PM -- INFO -- Feature Type: imports
+09/27/2019 04:21:59 PM -- INFO -- Malware directory: feature_vector_directory\malware\malware_pe_files_import_feature_set.pk
+09/27/2019 04:21:59 PM -- INFO -- Benign directory: feature_vector_directoryenignenign_pe_files_import_feature_set.pk
+09/27/2019 04:21:59 PM -- INFO -- Output: adversarial_feature_vector_directoryadversarial_imports_set.pk
+09/27/2019 04:23:08 PM -- INFO -- 
+
+******************* New Run Beginning *****************
+09/27/2019 04:23:08 PM -- INFO -- No GPU detected. Running CPU only.
+09/27/2019 04:23:08 PM -- INFO -- Feature Type: section
+09/27/2019 04:23:08 PM -- INFO -- Malware directory: feature_vector_directory\malware\malware_pe_files_section_feature_set.pk
+09/27/2019 04:23:08 PM -- INFO -- Benign directory: feature_vector_directory\benign\benign_pe_files_section_feature_set.pk
+09/27/2019 04:23:08 PM -- INFO -- Output: adversarial_feature_vector_directoryadversarial_imports_set.pk
+09/27/2019 04:23:08 PM -- DEBUG -- self.x.shape[1] : 145
+09/27/2019 04:23:08 PM -- DEBUG -- self.x.shape[1] : 145
+09/27/2019 04:23:08 PM -- DEBUG -- self.x.shape[1] : 145
+09/27/2019 04:23:08 PM -- INFO -- Constructing new MalGAN
+09/27/2019 04:23:08 PM -- INFO -- Malware Dimension (M): 145
+09/27/2019 04:23:08 PM -- INFO -- Latent Dimension (Z): 10
+09/27/2019 04:23:08 PM -- INFO -- Test Split Ratio: 0.200
+09/27/2019 04:23:08 PM -- INFO -- Generator Hidden Layer Sizes: [256, 256]
+09/27/2019 04:23:08 PM -- INFO -- Discriminator Hidden Layer Sizes: [256, 256]
+09/27/2019 04:23:08 PM -- INFO -- Blackbox Detector Type: RandomForest
+09/27/2019 04:23:08 PM -- INFO -- Activation Type: LeakyReLU
+09/27/2019 04:23:08 PM -- INFO -- CUDA State: Disabled
+09/27/2019 04:23:08 PM -- DEBUG -- Starting training of blackbox detector of type "RandomForest"
+09/27/2019 04:23:08 PM -- DEBUG -- COMPLETED training of blackbox detector of type "RandomForest"
+09/27/2019 04:26:11 PM -- INFO -- 
+
+******************* New Run Beginning *****************
+09/27/2019 04:26:11 PM -- INFO -- No GPU detected. Running CPU only.
+09/27/2019 04:26:11 PM -- INFO -- Feature Type: imports
+09/27/2019 04:26:11 PM -- INFO -- Malware directory: feature_vector_directory\malware\malware_pe_files_import_feature_set.pk
+09/27/2019 04:26:11 PM -- INFO -- Benign directory: feature_vector_directory\benign\benign_pe_files_import_feature_set.pk
+09/27/2019 04:26:11 PM -- INFO -- Output: adversarial_feature_vector_directoryadversarial_imports_set.pk
+09/27/2019 04:26:11 PM -- DEBUG -- self.x.shape[1] : 9423
+09/27/2019 04:26:11 PM -- DEBUG -- self.x.shape[1] : 9423
+09/27/2019 04:26:11 PM -- DEBUG -- self.x.shape[1] : 9423
+09/27/2019 04:26:11 PM -- INFO -- Constructing new MalGAN
+09/27/2019 04:26:11 PM -- INFO -- Malware Dimension (M): 9423
+09/27/2019 04:26:11 PM -- INFO -- Latent Dimension (Z): 10
+09/27/2019 04:26:11 PM -- INFO -- Test Split Ratio: 0.200
+09/27/2019 04:26:11 PM -- INFO -- Generator Hidden Layer Sizes: [256, 256]
+09/27/2019 04:26:11 PM -- INFO -- Discriminator Hidden Layer Sizes: [256, 256]
+09/27/2019 04:26:11 PM -- INFO -- Blackbox Detector Type: RandomForest
+09/27/2019 04:26:11 PM -- INFO -- Activation Type: LeakyReLU
+09/27/2019 04:26:11 PM -- INFO -- CUDA State: Disabled
+09/27/2019 04:26:11 PM -- DEBUG -- Starting training of blackbox detector of type "RandomForest"

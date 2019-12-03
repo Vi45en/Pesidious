@@ -18,5 +18,3 @@ six==1.12.0
 sklearn==0.0
 tqdm==4.33.0
 urllib3==1.25.3
-torch==1.2.0+cu92
-torchvision==0.4.0+cu92
