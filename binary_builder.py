@@ -97,7 +97,11 @@ def imports_to_dict(adversarial_imports_set: list):
 
     for imports in adversarial_imports_set:
         # logging.debug("\t\t--> Imports : " + str(imports))
+<<<<<<< HEAD
         if len(imports.split(':')) > 2 or "hal.dll" in imports:
+=======
+        if len(imports.split(':')) > 2:
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
             logging.debug("Deleting import : " + str(imports))
             adversarial_imports_set.remove(imports)
             logging.debug(str(imports) + " has been deleted ...")
@@ -746,11 +750,18 @@ def call_c_application_for_imports(pefile: str, importFile:str, cpath: str, outp
 def call_c_application_for_section(section_app: str, pefile: str, section_file: str, section_content: str, output_file: str):
     
     # cmd = "./" + str(section_app) + " " + str(output_file) + " " + str(section_file) + " manipulation_content/section_content " + str(output_file)
+<<<<<<< HEAD
     # subprocess.run(["./" + str(section_app), output_file, section_file, section_content, output_file])
     # cmd = './portable-executable/project-add-sections/bin/Release/project-append-section Mutated_Binaries/Mutated_Binaries_new/all_features/mutated_55754d7bc221d58cebc24daeb3476fa2dbfdaf6ab75e9d3a30456dd5cbf589e5.exe RL_Features/all_features/sections/49_adversarial_sections_set.txt manipulation_content/section-content.txt Mutated_Binaries/Mutated_Binaries_new/all_features/mutated_55754d7bc221d58cebc24daeb3476fa2dbfdaf6ab75e9d3a30456dd5cbf589e5.exe'
     # logging.info(cmd)
     # os.system(str(cmd))
     pass
+=======
+    subprocess.run(["./" + str(section_app), output_file, section_file, section_content, output_file])
+    # cmd = './portable-executable/project-add-sections/bin/Release/project-append-section Mutated_Binaries/Mutated_Binaries_new/all_features/mutated_55754d7bc221d58cebc24daeb3476fa2dbfdaf6ab75e9d3a30456dd5cbf589e5.exe RL_Features/all_features/sections/49_adversarial_sections_set.txt manipulation_content/section-content.txt Mutated_Binaries/Mutated_Binaries_new/all_features/mutated_55754d7bc221d58cebc24daeb3476fa2dbfdaf6ab75e9d3a30456dd5cbf589e5.exe'
+    # logging.info(cmd)
+    # os.system(str(cmd))
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
 
 
 def main():

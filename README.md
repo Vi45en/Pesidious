@@ -177,14 +177,21 @@ The following steps will guide you through all the installations required to set
    
 ### Testing Data
 
+<<<<<<< HEAD
 Download the backdoor malware binary testing dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/Eba11TVqORhCigT0Mg_hS4IBw2B7PK2eRJWwqmqm9wR1LA?e=STnjmA) and place the **files** into the `testing-samples` directory.
+=======
+Download the malware binary testing dataset [here](https://uowmailedu-my.sharepoint.com/:u:/g/personal/cvrv570_uowmail_edu_au/Eba11TVqORhCigT0Mg_hS4IBw2B7PK2eRJWwqmqm9wR1LA?e=STnjmA) and place the **files** into the `testing-samples` directory.
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
 
  
 ## Running Instructions
 
 ### Training Instructions
 
+<<<<<<< HEAD
 > :warning: WARNING: This segment is currently incomplete due to limited time. The code however is functional. WE apologize for any inconvinience caused. Please proceed to the next section. [click here](#testing-instructions)
+=======
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
 
 > Note: If you wish to skip the training and jump directly to testing our trained model [click here](#testing-instructions)
 
@@ -240,7 +247,19 @@ Download the backdoor malware binary testing dataset [here](https://uowmailedu-m
    
    + The `binary_builder.py` python script outputs the `adversarial_imports_set.pk` or the `adversarial_section_set.pk`, based on the feature mapping you select, in the `adversarial_feature_vector_directory` directory. 
    
+<<<<<<< HEAD
 1. > There is one last step here. Soon to be completed. 
+=======
+1. Training RL agent.
+
+   + The RL agent will use deep learning to learn the most optimal policy that can generate the best combination of mutations for the malware. The following mutations are being used for the training : 
+   
+      > Appending random number of bytes to malware, Adding Imports, Adding Sections, Renaming sections, Appending to sections, UPX Pack/Unpack, Remove Debug Information.
+
+   ```
+   python dqeaf.py
+   ```
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
    
 
 ### Testing Instructions
@@ -322,6 +341,7 @@ The training tests the learning agent after every 550 episodes with 200 samples.
       python extract_features.py
       ```
    > This data cleansing process is case-to-case. For our application, we have restricted our research to Windows 32 bit applications, and hence we are cleaning our datasets based on that. 
+<<<<<<< HEAD
       
 
 
@@ -331,6 +351,25 @@ The training tests the learning agent after every 550 episodes with 200 samples.
 - [ ] Combine scripts for reinforcement learning and malware generative adversarial network into one script for ease of use. 
 - [ ] Identify more accurate import functions for malwares, to retain functionality.
 - [ ] Improve the functionality of the mutated malware.
+=======
+   
+
+1. **Error with the classifier for RL**
+
+   Solution:
+   Install another version of the torch to work with RL. The torch version used with GAN might not be compatible with the RL agent.
+   
+      ```
+      pip install torch==1.2.0+cpu torchvision==0.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+      ```
+     
+
+## To Do
+
+-  Substitute Blackbox detector with Virus total as the training detector. 
+-  Combine scripts for reinforcement learning and malware generative adversarial network into one script for ease of use. 
+-  Decrease the detectiong rates of the mutated malware.
+>>>>>>> a069b411327b9f0cc518ba062de6db59c247e4c5
 
 ## Built With
 
