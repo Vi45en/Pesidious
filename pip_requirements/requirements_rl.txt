@@ -20,7 +20,7 @@ pkg-resources==0.0.0
 prompt-toolkit==1.0.16
 ptyprocess==0.6.0
 pyglet==1.4.2
-Pygments==2.4.2
+Pygments==2.7.4
 pyparsing==2.4.2
 python-dateutil==2.8.0
 requests==2.22.0
