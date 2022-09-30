@@ -5,7 +5,7 @@ chardet==3.0.4
 cryptography==2.7
 cuckoo-api==20170924.1
 idna==2.8
-joblib==0.13.2
+joblib==1.2.0
 lief==0.10.0.dev0
 numpy==1.17.0
 Pillow==6.2.0
